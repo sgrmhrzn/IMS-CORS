@@ -54,14 +54,27 @@
     
 })
 app.controller("singleStudentCntrl", function ($scope, studentService, $filter, $state, $stateParams, employeeSettingsService) {
+    $scope.guardianDetailDiv = false;
+    $scope.viewMoreBtn = true;
     getRecordById();
     getAllDepartment();
     var Student = [];
 
+    $scope.viewMore = function () {
+        $scope.viewLessBtn = true;
+        $scope.guardianDetailDiv = true;
+        $scope.viewMoreBtn = false;
+    }
+
+    $scope.viewLess = function () {
+        $scope.viewLessBtn = false;
+        $scope.viewMoreBtn = true;
+        $scope.guardianDetailDiv = false;
+    }
+
     $scope.Action = $stateParams.action;
 
     function getRecordById() {
-
         //image cropper start
         $scope.imageCropStep = 1;
         $scope.fileChanged = function (e) {
@@ -94,55 +107,75 @@ app.controller("singleStudentCntrl", function ($scope, studentService, $filter, 
             $scope.profile = prs.data;
             console.log($scope.profile);
 
-            $scope.ID = $scope.profile.ID;
+            $scope.ID = $scope.profile.StdID;
             $scope.NAME = $scope.profile.NAME;
-            $scope.ADDRESS = $scope.profile.ADDRESS;
-            $scope.PHONE_NO = $scope.profile.PHONE_NO;
-            $scope.MOBILE_NO = $scope.profile.MOBILE_NO;
-            $scope.EMAIL = $scope.profile.EMAIL;
-            $scope.DESIGNATION = $scope.profile.DESIGNATION;
-            $scope.PERMANENT_ADDRESS = $scope.profile.PERMANENT_ADDRESS;
-            $scope.TEMP_ADDRESS = $scope.profile.TEMP_ADDRESS;
-            $scope.DOB = new Date($filter('date')($scope.profile.DOB, "yyyy-MM-dd"));
-            $scope.TEACHER_OR_NONTEACHER = $scope.profile.TEACHER_OR_NONTEACHER;
-            $scope.NATIONAL_ID_NO = $scope.profile.NATIONAL_ID_NO;
-            $scope.MARITAL_STATUS = $scope.profile.MARITAL_STATUS;
             $scope.GENDER = $scope.profile.GENDER;
-            $scope.QUALIFICATION = $scope.profile.QUALIFICATION;
-            $scope.DEPTID = $scope.profile.departments.DEPTID;
-            $scope.JoiningDate = new Date($filter('date')($scope.profile.JoiningDate, "yyyy-MM-dd"));
+            $scope.DOB = new Date($filter('date')($scope.profile.DOB, "yyyy-MM-dd"));
+            $scope.NATIONALITY = $scope.profile.NATIONALITY;
+            $scope.ADDRESS = $scope.profile.ADDRESS;
+            $scope.PHONENO = $scope.profile.PHONENO;
+            $scope.CLASS = $scope.profile.CLASS;
+            $scope.ENROLLEDYEAR = new Date($filter('date')($scope.profile.ENROLLEDYEAR, "yyyy-MM-dd"));
+            $scope.Category = $scope.profile.Category;
 
+            $scope.GUARDIAN_FIRSTNAME = $scope.profile.studentDetails.First_NAME;
+            $scope.GUARDIAN_LASTNAME = $scope.profile.studentDetails.Last_Name;
+            $scope.GUARDIAN_Relation = $scope.profile.studentDetails.Relation;
+            $scope.GUARDIAN_PHONE = $scope.profile.studentDetails.GUARDIAN_PHONE_NO;
+            $scope.GUARDIAN_MOBILE = $scope.profile.studentDetails.MOBILE_NO;
+            $scope.GUARDIAN_EMAIL = $scope.profile.studentDetails.EMAIL;
+            $scope.GUARDIAN_DOB = new Date($filter('date')($scope.profile.studentDetails.DOB, "yyyy-MM-dd"));
+            $scope.GUARDIAN_Education = $scope.profile.studentDetails.Education;
+            $scope.GUARDIAN_Occupation = $scope.profile.studentDetails.Occupation;
+            $scope.GUARDIAN_Income = $scope.profile.studentDetails.Income;
+            $scope.GUARDIAN_AddLine1 = $scope.profile.studentDetails.AddLine1;
+            $scope.GUARDIAN_AddLine2 = $scope.profile.studentDetails.AddLine2;
+            $scope.GUARDIAN_State = $scope.profile.studentDetails.State;
+            $scope.GUARDIAN_Country = $scope.profile.studentDetails.Country;
+            console.log($scope.GUARDIAN_FIRSTNAME);
         }, function () {
             alert('Error in getting records');
         });
     }
 
     $scope.AddUpdate = function () {
+        debugger;
         var dateBirth = $filter('date')($scope.DOB, "yyyy-MM-dd");
-        var joinDate = $filter('date')($scope.JoiningDate, "yyyy-MM-dd");
-        EMPLOYEE = {
+        var enrolledDate = $filter('date')($scope.ENROLLEDYEAR, "yyyy-MM-dd");
+        var parentsDOB = $filter('date')($scope.ParentsDOB, "yyyy-MM-dd");
+        Student = {
             NAME: $scope.NAME,
-            PHONE_NO: $scope.PHONE_NO,
-            MOBILE_NO: $scope.MOBILE_NO,
-            EMAIL: $scope.EMAIL,
-            DESIGNATION: $scope.DESIGNATION,
-            PERMANENT_ADDRESS: $scope.PERMANENT_ADDRESS,
-            TEMP_ADDRESS: $scope.TEMP_ADDRESS,
+            PHONENO: $scope.PHONENO,
             DOB: dateBirth,
-            TEACHER_OR_NONTEACHER: $scope.TEACHER_OR_NONTEACHER,
-            NATIONAL_ID_NO: $scope.NATIONAL_ID_NO,
-            MARITAL_STATUS: $scope.MARITAL_STATUS,
+            CLASS: $scope.CLASS,
+            ADDRESS: $scope.ADDRESS,
             GENDER: $scope.GENDER,
-            QUALIFICATION: $scope.QUALIFICATION,
-            DEPTID: $scope.DEPTID,
-            JoiningDate: joinDate,
-            base64: (($scope.result != null) ? $scope.result : 'null')
+            NATIONALITY: $scope.NATIONALITY,
+            ENROLLEDYEAR: enrolledDate,
+            Category: $scope.Category,
+            base64: (($scope.result != null) ? $scope.result : 'null'),
+            studentDetails: {
+                GUARDIAN_PHONE_NO: $scope.GUARDIAN_PHONE,
+                MOBILE_NO: $scope.GUARDIAN_MOBILE,
+                First_NAME: $scope.GUARDIAN_FIRSTNAME,
+                Last_Name: $scope.GUARDIAN_LASTNAME,
+                Relation: $scope.GUARDIAN_Relation,
+                DOB: GUARDIAN_DOB,
+                Education: $scope.GUARDIAN_Education,
+                Occupation: $scope.GUARDIAN_Occupation,
+                Income: $scope.GUARDIAN_Income,
+                Email: $scope.GUARDIAN_EMAIL,
+                AddLine1: $scope.GUARDIAN_AddLine1,
+                AddLine2: $scope.GUARDIAN_AddLine2,
+                State: $scope.GUARDIAN_State,
+                Country: $scope.GUARDIAN_Country
+            }
         }
         //console.log(EMPLOYEE.base64);
         var getAction = $scope.Action;
         if (getAction == "Update") {
             EMPLOYEE.ID = $scope.ID;
-            var getData = studentService.updateRecord(EMPLOYEE);
+            var getData = studentService.updateRecord(Student);
             getData.then(function (msg) {
                 alert(msg.data);
                 $scope.divAddUpdate = false;
@@ -151,16 +184,15 @@ app.controller("singleStudentCntrl", function ($scope, studentService, $filter, 
             });
         }
         else {
-            var getData = studentService.AddRecord(EMPLOYEE);
+            var getData = studentService.AddRecord(Student);
                 getData.then(function (msg) {
                     //console.log(personDetails);
                     alert(msg.data);
-                    $scope.divAddUpdate = false;
                 }, function () {
                     alert('Error in adding record');
                 });
             }
-        $state.go("employee.search");
+        $state.go("students.search");
     }
 
     //drop down departments

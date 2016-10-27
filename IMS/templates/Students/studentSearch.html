@@ -8,15 +8,15 @@
     <div class="divList">
         <table class="table table-hover">
             <tr>
-                <td><b>ID</b></td>
+                <td><b>#</b></td>
                 <td><b>Name</b></td>
+                <td><b>Class</b></td>
                 <td><b>Phone No</b></td>
-                <td><b>Mobile No</b></td>
-                <td><b>Email</b></td>
+                <td><b>Category</b></td>
                 <td><b>Action</b></td>
 
             </tr>
-            <tr ng-repeat="std in Students | filter: {'NAME':search}">
+            <tr ng-repeat="std in Student | filter: {'NAME':search}">
                 <td>
                     {{$index +1}}
                 </td>
@@ -27,13 +27,13 @@
                     {{std.CLASS}}
                 </td>
                 <td>
-                    {{std.ENROLLEDYEAR}}
+                    {{std.ENROLLEDYEAR |  date:'yyyy-MM-dd' }}
                 </td>
                 <td>
                     {{std.Category}}
                 </td>
                 <td>
-                    <a ui-sref="students.detailAsRoot({id:emp.ID})" class="btn btn-success" value="View"><i class="glyphicon glyphicon-user"> </i>View</a>
+                    <a ui-sref="students.detailAsRoot({id:std.StdID})" class="btn btn-success" value="View"><i class="glyphicon glyphicon-user"> </i>View</a>
                 </td>
             </tr>
         </table>

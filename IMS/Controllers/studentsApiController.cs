@@ -21,62 +21,69 @@ namespace IMS.Controllers
         }
 
         // GET: api/Test/5
-        public EMPLOYEE Get(string id)
+        public Student Get(string id)
         {
             int no = Convert.ToInt32(id);
-            var byId = db.employee.Include("departments").Where(x => x.ID == no).FirstOrDefault();
+            var byId = db.students.Include("studentDetails").Where(x => x.StdID == no).FirstOrDefault();
             return byId;
         }
 
-        [Route("api/employeeApi/add")]
+        [Route("api/studentsApi/add")]
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [HttpPost, HttpGet]
-        public HttpResponseMessage Post(EMPLOYEE emp)
+        public HttpResponseMessage Post(Student std)
         {
-            string base64Data = Convert.ToString(emp.base64);
+            string base64Data = Convert.ToString(std.base64);
             //var data = base64Data.Substring(base64Data.IndexOf("," + 1));
             //byte[] imageBytes = Convert.FromBase64String(data);
             //MemoryStream ms = new MemoryStream(imageBytes, 0, imageBytes.Length);
-            if (emp.base64 != "null")
+            if (std.base64 != "null")
             {
                 base64ToByte baseBytes = new base64ToByte();
-                emp.Photo = baseBytes.image(300, 300, base64Data);
+                std.Photo = baseBytes.image(300, 300, base64Data);
             }
 
-            db.employee.Add(emp);
+            db.students.Add(std);
             db.SaveChanges();
             return Request.CreateResponse(HttpStatusCode.OK, "Added!");
         }
 
-        [Route("api/employeeApi/update/{id}")]
+        [Route("api/studentsApi/update/{id}")]
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         [HttpPost, HttpGet]
-        public string Put(EMPLOYEE emp)
+        public string Put(Student std)
         {
-            if (emp != null)
+            if (std != null)
             {
-                int no = Convert.ToInt32(emp.ID);
-                var getEmployee = db.employee.Where(x => x.ID == no).FirstOrDefault();
-                getEmployee.NAME = emp.NAME;
-                getEmployee.PHONE_NO = emp.PHONE_NO;
-                getEmployee.EMAIL = emp.EMAIL;
-                getEmployee.MOBILE_NO = emp.MOBILE_NO;
-                getEmployee.DESIGNATION = emp.DESIGNATION;
-                getEmployee.PERMANENT_ADDRESS = emp.PERMANENT_ADDRESS;
-                getEmployee.TEMP_ADDRESS = emp.TEMP_ADDRESS;
-                getEmployee.DOB = emp.DOB;
-                getEmployee.TEACHER_OR_NONTEACHER = emp.TEACHER_OR_NONTEACHER;
-                getEmployee.NATIONAL_ID_NO = emp.NATIONAL_ID_NO;
-                getEmployee.MARITAL_STATUS = emp.MARITAL_STATUS;
-                getEmployee.GENDER = emp.GENDER;
-                getEmployee.QUALIFICATION = emp.QUALIFICATION;
-                getEmployee.DEPTID = emp.DEPTID;
+                int no = Convert.ToInt32(std.StdID);
+                var getStudents = db.students.Where(x => x.StdID == no).FirstOrDefault();
+                getStudents.NAME = std.NAME;
+                getStudents.PHONENO = std.PHONENO;
+                getStudents.CLASS = std.CLASS;
+                getStudents.GENDER = std.GENDER;
+                getStudents.NATIONALITY = std.NATIONALITY;
+                getStudents.ENROLLEDYEAR = std.ENROLLEDYEAR;
+                getStudents.Category = std.Category;
+                getStudents.DOB = std.DOB;
+                getStudents.studentDetails.GUARDIAN_PHONE_NO = std.studentDetails.GUARDIAN_PHONE_NO;
+                getStudents.studentDetails.MOBILE_NO = std.studentDetails.MOBILE_NO;
+                getStudents.studentDetails.First_NAME = std.studentDetails.First_NAME;
+                getStudents.studentDetails.Last_Name = std.studentDetails.Last_Name;
+                getStudents.studentDetails.Relation = std.studentDetails.Relation;
+                getStudents.studentDetails.Education = std.studentDetails.Education;
+                getStudents.studentDetails.Occupation = std.studentDetails.Occupation;
+                getStudents.studentDetails.Income = std.studentDetails.Income;
+                getStudents.studentDetails.Email = std.studentDetails.Email;
+                getStudents.studentDetails.AddLine1 = std.studentDetails.AddLine1;
+                getStudents.studentDetails.AddLine2 = std.studentDetails.AddLine2;
+                getStudents.studentDetails.State = std.studentDetails.State;
+                getStudents.studentDetails.Country = std.studentDetails.Country;
 
-                if (emp.base64 != "null")
+                if (std.base64 != "null")
                 {
-                    string base64Data = Convert.ToString(emp.base64);
+                    string base64Data = Convert.ToString(std.base64);
                     base64ToByte baseBytes = new base64ToByte();
-                    getEmployee.Photo = baseBytes.image(300, 300, base64Data);
+                    getStudents.Photo = baseBytes.image(300, 300, base64Data);
                 }
 
                 db.SaveChanges();
@@ -89,13 +96,13 @@ namespace IMS.Controllers
         }
 
         // DELETE: api/Test/5
-        [Route("api/Test/delete/{id}")]
+        [Route("api/studentsApi/delete/{id}")]
         [HttpPost]
-        public string Delete(EMPLOYEE emp)
+        public string Delete(Student std)
         {
-            int no = Convert.ToInt32(emp.ID);
-            var record = db.employee.Include("contact_detail").Where(x => x.ID == no).FirstOrDefault();
-            db.employee.Remove(record);
+            int no = Convert.ToInt32(std.StdID);
+            var record = db.students.Include("studentDetails").Where(x => x.StdID == no).FirstOrDefault();
+            db.students.Remove(record);
             db.SaveChanges();
             return "Deleted";
         }

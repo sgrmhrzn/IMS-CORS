@@ -11,12 +11,9 @@
                 <td><b>#</b></td>
                 <td><b>Name</b></td>
                 <td><b>Username</b></td>
-                <td><b>Password</b></td>
                 <td><b>Master ID</b></td>
                 <td><b>Status</b></td>
-                <td><b>Prefix</b></td>
-                <td><b>ID</b></td>
-                
+                <td><b>User Type</b></td>
                 <td><b>Action</b></td>
 
             </tr>
@@ -31,21 +28,23 @@
                     {{user.UserName}}
                 </td>
                 <td>
-                    {{user.UserPassword}}
-                </td>
-                <td>
                     {{user.MasterID}}
                 </td>
                 <td>
                     {{user.Status}}
                 </td>
-                
-                <td>
+
+                <td ng-if="Prefix == 'S'">Student</td>
+                <td ng-if="Prefix == 'T'">Teacher</td>
+
+                <td style="display:none">
                     {{Prefix = (user.MasterID | splitString)}}
                 </td>
-                <td>
+
+                <td style="display:none">
                     {{MasterKey = (user.MasterID | splitNumber)}}
                 </td>
+
                 <td>
                     <a ui-sref="users.Update({id:user.UserID, action:'Update'})" class="btn btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
                     

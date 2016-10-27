@@ -58,6 +58,16 @@
                 </div>
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Address</label>
+            <div class="col-sm-10">
+                <input name="add" class="form-control col-md-3" type="text" ng-model="ADDRESS" required />
+                <div ng-messages="studentsForm.add.$error" ng-if="studentsForm.add.$touched">
+                    <p ng-message="required">Address Id is required!</p>
+                </div>
+            </div>
+        </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Phone No</label>
             <div class="col-sm-10">
@@ -148,7 +158,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">First Name</label>
             <div class="col-sm-10">
-                <input name="FName" type="text" class="form-control col-md-3" ng-model="First_NAME" required />
+                <input name="FName" type="text" class="form-control col-md-3" ng-model="GUARDIAN_FIRSTNAME" required />
                 <div ng-messages="studentsForm.FName.$error" ng-if="studentsForm.FName.$touched">
                     <p ng-message="required">First Name is required!</p>
                 </div>
@@ -157,7 +167,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Last Name</label>
             <div class="col-sm-10">
-                <input name="LName" type="text" class="form-control col-md-3" ng-model="Last_Name" required />
+                <input name="LName" type="text" class="form-control col-md-3" ng-model="GUARDIAN_LASTNAME" required />
                 <div ng-messages="studentsForm.LName.$error" ng-if="studentsForm.LName.$touched">
                     <p ng-message="required">Last Name is required!</p>
                 </div>
@@ -166,7 +176,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Phone No</label>
             <div class="col-sm-10">
-                <input name="Gphone" class="form-control col-md-3" type="text" ng-model="GUARDIAN_PHONE_NO" required />
+                <input name="Gphone" class="form-control col-md-3" type="text" ng-model="GUARDIAN_PHONE" required />
                 <div ng-messages="studentsForm.Gphone.$error" ng-if="studentsForm.Gphone.$touched">
                     <p ng-message="required">Phone no is required!</p>
                 </div>
@@ -175,7 +185,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Mobile No</label>
             <div class="col-sm-10">
-                <input class="form-control col-md-3" name="Gmobile" type="text" ng-model="GENDER" value="M" required />
+                <input class="form-control col-md-3" name="Gmobile" type="text" ng-model="GUARDIAN_MOBILE" value="M" required />
                 <div ng-messages="studentsForm.Gmobile.$error" ng-if="studentsForm.Gmobile.$touched">
                     <p ng-message="required">Mobile no is required!</p>
                 </div>
@@ -184,7 +194,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Email</label>
             <div class="col-sm-10">
-                <input name="Email" type="email" class="form-control col-md-3" ng-model="Email" required />
+                <input name="Email" type="email" class="form-control col-md-3" ng-model="GUARDIAN_EMAIL" required />
                 <div ng-messages="studentsForm.Email.$error" ng-if="studentsForm.Email.$touched">
                     <p ng-message="required">Email is required!</p>
                 </div>
@@ -193,7 +203,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Relation</label>
             <div class="col-sm-10">
-                <input name="relation" type="text" class="form-control col-md-3" ng-model="Relation" required />
+                <input name="relation" type="text" class="form-control col-md-3" ng-model="GUARDIAN_Relation" required />
                 <div ng-messages="studentsForm.relation.$error" ng-if="studentsForm.relation.$touched">
                     <p ng-message="required">Relation is required!</p>
                 </div>
@@ -202,7 +212,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Date of Birth</label>
             <div class="col-sm-10">
-                <input name="Pdob" type="date" class="form-control col-md-3" ng-model="ParentsDOB" required />
+                <input name="Pdob" type="date" class="form-control col-md-3" ng-model="GUARDIAN_DOB" required />
                 <div ng-messages="studentsForm.Pdob.$error" ng-if="studentsForm.Pdob.$touched">
                     <p ng-message="required">DOB is required!</p>
                 </div>
@@ -211,7 +221,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Education</label>
             <div class="col-sm-10">
-                <input typeof="text" name="education" class="form-control col-md-3" type="text" ng-model="Education" required />
+                <input typeof="text" name="education" class="form-control col-md-3" type="text" ng-model="GUARDIAN_Education" required />
                 <div ng-messages="studentsForm.education.$error" ng-if="studentsForm.education.$touched">
                     <p ng-message="required">Education is required!</p>
                 </div>
@@ -221,7 +231,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Occupation</label>
             <div class="col-sm-10">
-                <input name="Occupation" class="form-control col-md-3" type="text" ng-model="Occupation" required />
+                <input name="Occupation" class="form-control col-md-3" type="text" ng-model="GUARDIAN_Occupation" required />
                 <div ng-messages="studentsForm.Occupation.$error" ng-if="studentsForm.Occupation.$touched">
                     <p ng-message="required">Occupation Id is required!</p>
                 </div>
@@ -230,7 +240,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Income</label>
             <div class="col-sm-10">
-                <input name="Income" type="text" class="form-control col-md-3" ng-model="Income" required />
+                <input name="Income" type="text" class="form-control col-md-3" ng-model="GUARDIAN_Income" required />
                 <div ng-messages="studentsForm.Income.$error" ng-if="studentsForm.Income.$touched">
                     <p ng-message="required">Income is required!</p>
                 </div>
@@ -239,7 +249,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">State</label>
             <div class="col-sm-10">
-                <input name="State" type="email" class="form-control col-md-3" ng-model="State" required />
+                <input name="State" type="text" class="form-control col-md-3" ng-model="GUARDIAN_State" required />
                 <div ng-messages="studentsForm.State.$error" ng-if="studentsForm.State.$touched">
                     <p ng-message="required">State is required!</p>
                 </div>
@@ -248,7 +258,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Country</label>
             <div class="col-sm-10">
-                <input name="Country" type="email" class="form-control col-md-3" ng-model="Country" required />
+                <input name="Country" type="text" class="form-control col-md-3" ng-model="GUARDIAN_Country" required />
                 <div ng-messages="studentsForm.Country.$error" ng-if="studentsForm.Country.$touched">
                     <p ng-message="required">Country is required!</p>
                 </div>
@@ -257,13 +267,13 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">AddLine1</label>
             <div class="col-sm-10">
-                <input name="AddLine1" type="text" class="form-control col-md-3" ng-model="AddLine1" required />
+                <input name="AddLine1" type="text" class="form-control col-md-3" ng-model="GUARDIAN_AddLine1"  />
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">AddLine2</label>
             <div class="col-sm-10">
-                <input name="AddLine2" type="text" class="form-control col-md-3" ng-model="AddLine2" required />
+                <input name="AddLine2" type="text" class="form-control col-md-3" ng-model="GUARDIAN_AddLine2"  />
             </div>
         </div>
        

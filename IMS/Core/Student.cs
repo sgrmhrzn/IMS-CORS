@@ -29,6 +29,9 @@ namespace IMS.Core
         public string GENDER { get; set; }
 
         [Required]
+        public string ADDRESS { get; set; }
+
+        [Required]
         public string NATIONALITY { get; set; }
 
         public DateTime ENROLLEDYEAR { get; set; }

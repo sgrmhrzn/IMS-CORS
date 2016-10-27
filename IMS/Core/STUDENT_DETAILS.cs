@@ -13,10 +13,10 @@ namespace IMS.Core
         public int StdID { get; set; }
 
         [Required]
-        public long? GUARDIAN_PHONE_NO { get; set; }
+        public long GUARDIAN_PHONE_NO { get; set; }
 
         [Required]
-        public long? MOBILE_NO { get; set; }
+        public long MOBILE_NO { get; set; }
 
         [Required]
         public string First_NAME{ get; set; }
@@ -25,7 +25,7 @@ namespace IMS.Core
         public string Last_Name { get; set; }
 
         [Required]
-        public int Relation { get; set; }
+        public string Relation { get; set; }
 
         [Required(ErrorMessage = "Invalid Date")]
         public DateTime DOB { get; set; }
@@ -51,7 +51,7 @@ namespace IMS.Core
         public string State { get; set; }
 
         [Required]
-        public int Country { get; set; }
+        public string Country { get; set; }
 
         public virtual Student students { get; set; }
     }

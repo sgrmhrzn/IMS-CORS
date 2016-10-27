@@ -110,6 +110,14 @@
                     controller: 'singleStudentCntrl'
                 }
             },
+        }).state('students.detailAsRoot', {
+            url: '^/profile/student/:id',
+            views: {
+                '@': {
+                    templateUrl: 'templates/students/studentProfile.html',
+                    controller: 'singleStudentCntrl'
+                }
+            },
         })
 
 }])
