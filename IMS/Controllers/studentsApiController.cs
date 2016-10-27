@@ -60,6 +60,7 @@ namespace IMS.Controllers
                 getStudents.NAME = std.NAME;
                 getStudents.PHONENO = std.PHONENO;
                 getStudents.CLASS = std.CLASS;
+                getStudents.ADDRESS = std.ADDRESS;
                 getStudents.GENDER = std.GENDER;
                 getStudents.NATIONALITY = std.NATIONALITY;
                 getStudents.ENROLLEDYEAR = std.ENROLLEDYEAR;

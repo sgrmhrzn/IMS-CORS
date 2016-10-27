@@ -105,7 +105,7 @@ app.controller("singleStudentCntrl", function ($scope, studentService, $filter, 
 
         getData.then(function (prs) {
             $scope.profile = prs.data;
-            console.log($scope.profile);
+            //console.log($scope.profile);
 
             $scope.ID = $scope.profile.StdID;
             $scope.NAME = $scope.profile.NAME;
@@ -123,7 +123,7 @@ app.controller("singleStudentCntrl", function ($scope, studentService, $filter, 
             $scope.GUARDIAN_Relation = $scope.profile.studentDetails.Relation;
             $scope.GUARDIAN_PHONE = $scope.profile.studentDetails.GUARDIAN_PHONE_NO;
             $scope.GUARDIAN_MOBILE = $scope.profile.studentDetails.MOBILE_NO;
-            $scope.GUARDIAN_EMAIL = $scope.profile.studentDetails.EMAIL;
+            $scope.GUARDIAN_EMAIL = $scope.profile.studentDetails.Email;
             $scope.GUARDIAN_DOB = new Date($filter('date')($scope.profile.studentDetails.DOB, "yyyy-MM-dd"));
             $scope.GUARDIAN_Education = $scope.profile.studentDetails.Education;
             $scope.GUARDIAN_Occupation = $scope.profile.studentDetails.Occupation;
@@ -142,7 +142,7 @@ app.controller("singleStudentCntrl", function ($scope, studentService, $filter, 
         debugger;
         var dateBirth = $filter('date')($scope.DOB, "yyyy-MM-dd");
         var enrolledDate = $filter('date')($scope.ENROLLEDYEAR, "yyyy-MM-dd");
-        var parentsDOB = $filter('date')($scope.ParentsDOB, "yyyy-MM-dd");
+        var guardianDOB = $filter('date')($scope.GUARDIAN_DOB, "yyyy-MM-dd");
         Student = {
             NAME: $scope.NAME,
             PHONENO: $scope.PHONENO,
@@ -160,7 +160,7 @@ app.controller("singleStudentCntrl", function ($scope, studentService, $filter, 
                 First_NAME: $scope.GUARDIAN_FIRSTNAME,
                 Last_Name: $scope.GUARDIAN_LASTNAME,
                 Relation: $scope.GUARDIAN_Relation,
-                DOB: GUARDIAN_DOB,
+                DOB: guardianDOB,
                 Education: $scope.GUARDIAN_Education,
                 Occupation: $scope.GUARDIAN_Occupation,
                 Income: $scope.GUARDIAN_Income,
@@ -174,11 +174,10 @@ app.controller("singleStudentCntrl", function ($scope, studentService, $filter, 
         //console.log(EMPLOYEE.base64);
         var getAction = $scope.Action;
         if (getAction == "Update") {
-            EMPLOYEE.ID = $scope.ID;
+            Student.StdID = $scope.ID;
             var getData = studentService.updateRecord(Student);
             getData.then(function (msg) {
                 alert(msg.data);
-                $scope.divAddUpdate = false;
             }, function () {
                 alert('Error in updating record');
             });

@@ -257,6 +257,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handler\studentImageHandler.ashx.cs">
+      <DependentUpon>studentImageHandler.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Handler\employeImageHandler.ashx.cs">
       <DependentUpon>employeImageHandler.ashx</DependentUpon>
     </Compile>
@@ -332,6 +335,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Handler\employeImageHandler.ashx" />
+    <Content Include="Handler\studentImageHandler.ashx" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -346,7 +350,7 @@
     <Content Include="templates\Students\studentAddUpdate.html" />
     <Content Include="templates\Students\EMPsettings.html" />
     <Content Include="templates\Students\Index.html" />
-    <Content Include="templates\Students\profile.html" />
+    <Content Include="templates\Students\studentProfile.html" />
     <Content Include="templates\Employee\Search.html" />
     <Content Include="templates\Employee\profile.html" />
     <Content Include="templates\Employee\Index.html" />

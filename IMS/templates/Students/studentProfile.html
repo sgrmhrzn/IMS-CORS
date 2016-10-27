@@ -17,7 +17,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" ng-src="/Handler/employeImageHandler.ashx?id={{profile.ID}}" class="img-circle img-responsive"> </div>
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" ng-src="/Handler/studentImageHandler.ashx?id={{profile.StdID}}" class="img-circle img-responsive"> </div>
                         <div class="col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
                                 <tbody>
@@ -56,17 +56,14 @@
                                     </tr>
                                     <tr>
                                         <td><b>Phone Number</b></td>
-                                        <td>
-                                            {{profile.PHONENO}}
-                                        </td>
+                                        <td>{{profile.PHONENO}}</td>
                                     </tr>
-
-
                                 </tbody>
                             </table>
+
                             <div class="pull-right">
-                                <a ng-show="viewMoreBtn" ng-click="viewMore()" class="btn btn-primary">View More</a>
-                                <a ng-show="viewLessBtn" ng-click="viewLess()" class="btn btn-warning">View Less</a>
+                                <a ng-show="viewMoreBtn" ng-click="viewMore()" class="btn btn-primary"><i class="glyphicon glyphicon-arrow-down"> </i>View More</a>
+                                <a ng-show="viewLessBtn" ng-click="viewLess()" class="btn btn-warning"><i class="glyphicon glyphicon-arrow-up"> </i>View Less</a>
                             </div>
                             <table ng-show="guardianDetailDiv" class="table table-user-information">
 
@@ -91,7 +88,7 @@
                                     </tr>
                                     <tr>
                                         <td><b>Phone No</b></td>
-                                        <td>{{profile.studentDetails.GUARDIAN_PHONE_NO}}(Landline) <br>{{profile.studentDetails.MOBILE_NO}}(Mobile)</td>
+                                        <td>{{profile.studentDetails.GUARDIAN_PHONE_NO}}(Landline)<br /> <br>{{profile.studentDetails.MOBILE_NO}}(Mobile)</td>
                                     </tr>
                                     <tr>
                                         <td><b>Email</b></td>
@@ -119,7 +116,7 @@
                                     </tr>
                                     <tr>
                                         <td><b>AddLine</b></td>
-                                        <td>{{profile.studentDetails.AddLine1}} <br />{{profile.studentDetails.AddLine2}}</td>
+                                        <td>{{profile.studentDetails.AddLine1}}<br><br>{{profile.studentDetails.AddLine2}}</td>
                                     </tr>
 
                                 </tbody>
@@ -130,7 +127,7 @@
                 <div class="panel-footer">
                     <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
-                        <a data-original-title="Edit this user" ui-sref="employee.Update({id:profile.ID, action:'Update'})" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editRecord(profile)"><i class="glyphicon glyphicon-edit" ></i></a>
+                        <a data-original-title="Edit this user" ui-sref="students.Update({id:profile.StdID, action:'Update'})" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editRecord(profile)"><i class="glyphicon glyphicon-edit" ></i></a>
                         <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" ng-click="delete(profile)"><i class="glyphicon glyphicon-remove"></i></a>
                     </span>
                 </div>

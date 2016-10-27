@@ -41,10 +41,8 @@ namespace IMS.Core
         [Required]
         public string Email { get; set; }
 
-        [Required]
         public string AddLine1 { get; set; }
 
-        [Required]
         public string AddLine2 { get; set; }
 
         [Required]
