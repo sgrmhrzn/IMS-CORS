@@ -11,12 +11,16 @@ namespace IMS.Core
         [Key]
         public int ID { get; set; }
 
-        public string StdID { get; set; }
+        public int StdID { get; set; }
 
         public DateTime DateOfAttendance { get; set; }
 
-        public DateTime TIME { get; set; }
+        public TimeSpan TIME { get; set; }
 
         public string STATUS { get; set; }
+
+        //public Student students { get; set; }
+
+        //public ICollection<STUDENT_DETAILS> studentDetails { get; set; }
     }
 }

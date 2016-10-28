@@ -13,7 +13,7 @@ namespace IMS.Data
     {
 
 
-        public AbDataContext(): base("AbDataContext")
+        public AbDataContext() : base("AbDataContext")
         {
             //Configuration.ProxyCreationEnabled = false;
             //Configuration.LazyLoadingEnabled = false;
@@ -30,6 +30,10 @@ namespace IMS.Data
         public DbSet<Student> students { get; set; }
 
         public DbSet<STUDENT_DETAILS> studentDetails { get; set; }
+
+        public DbSet<FeeStructure> feeStructures { get; set; }
+
+        public DbSet<StdAttendance> stdAttendance { get; set;}
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

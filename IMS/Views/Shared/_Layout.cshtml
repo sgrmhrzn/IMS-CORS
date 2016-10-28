@@ -24,6 +24,8 @@
     <script src="~/Scripts/Application/Users/usersService.js"></script>
     <script src="~/Scripts/Application/Students/studentsController.js"></script>
     <script src="~/Scripts/Application/Students/studentsService.js"></script>
+    <script src="~/Scripts/Application/Finance/financeController.js"></script>
+    <script src="~/Scripts/Application/Finance/financeService.js"></script>
 
 
     <script>
@@ -133,7 +135,7 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top"></nav>
         <div class="nav-side-menu" style="z-index: 9999;">
-            <div class="brand">Brand Logo</div>
+            <div class="brand"><img src="~/Images/MIS logo-06.png" width="80" height="auto"/></div>
             <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
 
             <div class="menu-list">
@@ -156,12 +158,7 @@
                         <li><a href="#">Tabs & Accordions</a></li>
                         <li><a href="#">Typography</a></li>
                         <li><a href="#">FontAwesome</a></li>
-                        <li><a href="#">Slider</a></li>
-                        <li><a href="#">Panels</a></li>
-                        <li><a href="#">Widgets</a></li>
-                        <li><a href="#">Bootstrap Model</a></li>
                     </ul>
-
 
                     <li data-toggle="collapse" data-target="#service" class="collapsed">
                         <a href="#"><i class="fa fa-globe fa-lg"></i> Services <span class="arrow"></span></a>
@@ -171,7 +168,6 @@
                         <li>New Service 2</li>
                         <li>New Service 3</li>
                     </ul>
-
 
                     <li data-toggle="collapse" data-target="#new" class="collapsed">
                         <a href="#"><i class="fa fa-car fa-lg"></i> New <span class="arrow"></span></a>
@@ -194,6 +190,15 @@
                             <li ui-sref="students.search"><a>Search Student</a></li>
                             <li ui-sref="students.settings"><a>Student Settings</a></li>
                         </ul>
+
+                        <li data-toggle="collapse" data-target="#attendance" class="collapsed">
+                            <a href="#"><i class="fa fa-clock-o fa-lg"></i> Attendance<span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="attendance">
+                            <li ui-sref="attendance.add({action:'Add'})"><a>Attendance Entry</a></li>
+                            <li ui-sref="students.search"><a>Search Student</a></li>
+                            <li ui-sref="students.settings"><a>Student Settings</a></li>
+                        </ul>
                     </ul>
 
                     <li data-toggle="collapse" data-target="#administration" class="collapsed">
@@ -208,8 +213,15 @@
                             <li ui-sref="employee.search"><a>Search Employee</a></li>
                             <li ui-sref="employee.settings"><a>HR Settings</a></li>
                         </ul>
+                        <li data-toggle="collapse" data-target="#finance" class="collapsed">
+                            <a href="#"><i class="fa fa-money fa-lg"></i> Finance <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="finance">
+                            <li ui-sref="finance.fees"><a>Fees</a></li>
+                            <li ui-sref="finance.fees"><a>Search Employee</a></li>
+                            <li ui-sref="employee.settings"><a>HR Settings</a></li>
+                        </ul>
                     </ul>
-                        
 
                     <li data-toggle="collapse" data-target="#user" class="collapsed">
                         <a href="#"><i class="fa fa-users fa-lg"></i> Users <span class="arrow"></span></a>

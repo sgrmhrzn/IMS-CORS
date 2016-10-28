@@ -62,3 +62,29 @@
         return response;
     }
 });
+
+app.service("attendenceService", function ($http) {
+
+
+    this.getAllAtt = function () {
+
+        return $http.get("api/academic/attendance");
+    };
+
+    this.getStdNClass = function (Class) {
+        return $http.get("api/academic/getStudentByClass/"+ Class)
+    };
+
+    // Add Employee
+    this.AddRecord = function (record) {
+        debugger;
+        var response = $http({
+            method: "POST",
+            url: "api/academic/attendance/add",
+            data: JSON.stringify(record),
+            dataType: "json"
+        });
+        return response;
+    }
+
+})

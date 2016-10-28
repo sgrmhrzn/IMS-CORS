@@ -217,3 +217,70 @@ app.controller("singleStudentCntrl", function ($scope, studentService, $filter, 
         }
     }
 })
+
+app.controller("attendanceCntrl", function ($scope, attendenceService, $filter, $state, $stateParams) {
+    getAll();
+    $scope.Action = "Add";
+    $scope.StdAttend = [];
+
+
+
+    $scope.getStudents = function() {
+        var getData = attendenceService.getStdNClass($scope.CLASS);
+        getData.then(function (prs) {
+            $scope.stdClass = prs.data;
+            //$scope.profile = $scope.Student[$stateParams.id];
+
+        }, function () {
+            alert('Error in getting students');
+        });
+    }
+    //To Get All Records  
+    function getAll() {
+        var getData = attendenceService.getAllAtt();
+
+        getData.then(function (prs) {
+            $scope.StdAttend = prs.data;
+            //$scope.profile = $scope.Student[$stateParams.id];
+
+        }, function () {
+            alert('Error in getting records');
+        });
+    }
+
+    $scope.AddUpdate = function () {
+        debugger;
+        dateNow = new Date();
+        var dateOfAttendance = $filter('date')(dateNow, "yyyy-MM-dd");
+        var time = $filter('date')(dateNow, "HH:mm:ss");
+
+        StdAttend = {
+            StdID: $scope.StdID,
+            DateOfAttendance: dateOfAttendance,
+            TIME: time,
+            STATUS: $scope.STATUS
+        }
+        //console.log(EMPLOYEE.base64);
+        var getAction = $scope.Action;
+        var getData = attendenceService.AddRecord(StdAttend);
+        getData.then(function (msg) {
+            //console.log(personDetails);
+            alert(msg.data);
+        }, function () {
+            alert('Error in adding record');
+        });
+    }
+
+    $scope.AddUpdateDiv = function () {
+        ClearFields();
+        $scope.Action = "Add";
+        $scope.divAddUpdate = true;
+    }
+
+    $scope.cancel = function () {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible = false;
+        $scope.divAddUpdate = false;
+        $scope.detailViewDiv = false;
+    }
+})

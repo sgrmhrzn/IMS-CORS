@@ -107,5 +107,36 @@ namespace IMS.Controllers
             db.SaveChanges();
             return "Deleted";
         }
+
+
+        /**
+         * STUDENT ATTENDANCE API START
+         * 
+         * */
+        [Route("api/academic/attendance")]
+        [HttpGet]
+        public IEnumerable<StdAttendance> getAttendance()
+        {
+            //return new string[] { "value1", "value2" };
+            return db.stdAttendance.Include().AsEnumerable();
+        }
+
+        [Route("api/academic/attendance/add")]
+        [HttpPost]
+        public string attendanceEntry(StdAttendance stdAttend)
+        {
+            db.stdAttendance.Add(stdAttend);
+            db.SaveChanges();
+            return "added";
+        }
+
+        [Route("api/academic/getStudentByClass/{Class}")]
+        [HttpGet]
+        public List<Student> getStudentsById(string Class)
+        {
+            int getClass = Convert.ToInt32(Class);
+            return db.students.Where(s => s.CLASS == getClass).AsEnumerable().Select(s=> new Student {NAME =  s.NAME }).ToList();
+        }
     }
+
 }

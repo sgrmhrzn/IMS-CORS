@@ -90,7 +90,7 @@
             url: '^/students/:action',
             views: {
                 '@': {
-                    templateUrl: 'templates/students/studentAddUpdate.html',
+                    templateUrl: 'templates/academics/students/studentAddUpdate.html',
                     controller: 'singleStudentCntrl',
                 }
             },
@@ -98,7 +98,7 @@
             url: '^/studentSearch',
             views: {
                 '@': {
-                    templateUrl: 'templates/students/studentSearch.html',
+                    templateUrl: 'templates/academics/students/studentSearch.html',
                     controller: 'studentCntrl',
                 }
             },
@@ -106,7 +106,7 @@
             url: '^/studentUpdate?id&action',
             views: {
                 '@': {
-                    templateUrl: 'templates/students/studentAddUpdate.html',
+                    templateUrl: 'templates/academics/students/studentAddUpdate.html',
                     controller: 'singleStudentCntrl'
                 }
             },
@@ -114,12 +114,83 @@
             url: '^/profile/student/:id',
             views: {
                 '@': {
-                    templateUrl: 'templates/students/studentProfile.html',
+                    templateUrl: 'templates/academics/students/studentProfile.html',
                     controller: 'singleStudentCntrl'
                 }
             },
         })
 
+
+        //finance
+        .state('finance', {
+            controller: 'financeCntrl'
+        }).state('finance.fees', {
+            url: '^/fees',
+            views: {
+                '@': {
+                    templateUrl: 'templates/Finance/feeStructure.html',
+                    controller: 'financeCntrl',
+                }
+            },
+        }).state('finance.fees.create', {
+            url: '^/fees/:action',
+            views: {
+                '@': {
+                    templateUrl: 'templates/Finance/feeStructuresAddUpdate.html',
+                    controller: 'singleFinanceCntrl',
+                }
+            },
+        })
+        .state('finance.fees.update', {
+            url: '^/feesUpdate?id&action',
+            views: {
+                '@': {
+                    templateUrl: 'templates/Finance/feeStructuresAddUpdate.html',
+                    controller: 'singleFinanceCntrl'
+                }
+            },
+          })
+          //  .state('students.detailAsRoot', {
+        //    url: '^/profile/student/:id',
+        //    views: {
+        //        '@': {
+        //            templateUrl: 'templates/students/studentProfile.html',
+        //            controller: 'singleStudentCntrl'
+        //        }
+        //    },
+    //})
+
+
+    //Attendence
+        .state('attendance', {
+            controller: 'attendanceCntrl'
+        }).state('attendance.add', {
+            url: '^/attendance/:action',
+            views: {
+                '@': {
+                    templateUrl: 'templates/academics/attendance/attendanceSearch.html',
+                    controller: 'attendanceCntrl',
+                }
+            },
+        })
+        //.state('finance.fees.create', {
+        //    url: '^/fees/:action',
+        //    views: {
+        //        '@': {
+        //            templateUrl: 'templates/Finance/feeStructuresAddUpdate.html',
+        //            controller: 'singleFinanceCntrl',
+        //        }
+        //    },
+        //})
+        //.state('finance.fees.update', {
+        //    url: '^/feesUpdate?id&action',
+        //    views: {
+        //        '@': {
+        //            templateUrl: 'templates/Finance/feeStructuresAddUpdate.html',
+        //            controller: 'singleFinanceCntrl'
+        //        }
+        //    },
+        //})
 }])
 .config(['$urlRouterProvider',
   function($urlRouterProvider) {
