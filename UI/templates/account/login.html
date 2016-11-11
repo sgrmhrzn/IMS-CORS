@@ -1,0 +1,106 @@
+﻿<style>
+/*
+over-ride "Weak" message, show font in dark grey
+*/
+
+.progress-bar {
+    color: #333;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+	        box-sizing: border-box;
+	outline: none;
+}
+
+    .form-control {
+	  position: relative;
+	  font-size: 16px;
+	  height: auto;
+	  padding: 10px;
+		@include box-sizing(border-box);
+
+		&:focus {
+		  z-index: 2;
+		}
+	}
+
+body {
+	background: url(http://i.imgur.com/GHr12sH.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.login-form {
+	margin-top: 15%;
+}
+
+form[role=login] {
+	color: #5d5d5d;
+	background: #f2f2f2;
+	padding: 26px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+}
+	form[role=login] img {
+		display: block;
+		margin: 0 auto;
+		margin-bottom: 35px;
+	}
+	form[role=login] input,
+	form[role=login] button {
+		font-size: 18px;
+		margin: 16px 0;
+	}
+	form[role=login] > div {
+		text-align: center;
+	}
+
+.form-links {
+	text-align: center;
+	margin-top: 1em;
+	margin-bottom: 50px;
+}
+	.form-links a {
+		color: #fff;
+	}</style>    
+     
+<div ng-show="vm.loading"><img src="Images/Loading_icon.gif" style="margin: 13% 49%;position: absolute;width: 3%;z-index: 999;" /></div>
+       <div  class="login-form">
+           <div class="col-md-4" style="border-right:thin solid gray">
+           </div>
+           
+           <div class="col-md-2" >
+               <img src="../../Images/MIS logo-06.png" class="img-responsive" alt="" width="200" />
+           </div>
+
+           <div class="col-md-3" style="border-left:thin solid white;padding: 0% 3%;" >
+               
+               <div class="form-group" >
+                   <select type="text" class="form-control" ng-model="vm.userData.userType" >
+                       <option value="">User Type</option>
+                       <option value="A">Admin</option>
+                       <option value="M">Management</option>
+                       <option value="T">Teacher</option>
+                       <option value="S">Student</option>
+                   </select>
+               </div>
+
+               <div class="form-group ">
+                   <input type="text" class="form-control" placeholder="username" ng-model="vm.userData.email" />
+               </div>
+
+               <div class="form-group">
+                   <input type="password" class="form-control" placeholder="password" ng-model="vm.userData.password" />
+               </div>
+
+               <button type="submit" class="btn btn-success" ng-click="vm.login()">Login</button>
+               <!--<button type="submit" class="btn btn-default" ng-click="vm.registerUser()">Register</button>-->
+
+               <div ng-show="vm.message">{{vm.message}}</div>
+           </div>
+                </div>

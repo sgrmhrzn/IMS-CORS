@@ -1,0 +1,234 @@
+﻿<!DOCTYPE html>
+<html >
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/Site.css" rel="stylesheet" />
+    <link href="Content/font-awesome-mini.css" rel="stylesheet" />
+    <link href="Content/imageCropperStyle.css" rel="stylesheet" />
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+    <script src="Scripts/bootstrap.js"></script>
+
+   
+
+    <script>
+        $(document).ready(function () {
+            var panels = $('.user-infos');
+            var panelsButton = $('.dropdown-user');
+            panels.hide();
+
+            //Click dropdown
+            panelsButton.click(function () {
+                //get data-for attribute
+                var dataFor = $(this).attr('data-for');
+                var idFor = $(dataFor);
+
+                //current button
+                var currentButton = $(this);
+                idFor.slideToggle(400, function () {
+                    //Completed slidetoggle
+                    if (idFor.is(':visible')) {
+                        currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+                    }
+                    else {
+                        currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+                    }
+                })
+            });
+
+
+            $('[data-toggle="tooltip"]').tooltip();
+
+            $('button').click(function (e) {
+                e.preventDefault();
+                alert("This is a demo.\n :-)");
+            });
+
+
+            $("#menu-content li").on("click", function () {
+                $("#menu-content li").removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+    </script>
+    <style>
+        /*image cropper*/
+        .uploadMain {
+            font-size: 12px;
+            font-family: Helvetica, Arial;
+            margin: -15px 15px;
+            padding: 0;
+            text-align: center;
+        }
+
+        .cropped {
+            margin: 5%;
+            border: thin solid gray;
+        }
+
+        .add-edit-box {
+            position: absolute;
+            margin: 10% 9%;
+            z-index: 99;
+            top: 0px;
+            left: 0px;
+            background-color: aliceblue;
+            border: thin solid gray;
+            width: 1100px;
+            padding: 5%;
+        }
+
+        /*end*/
+
+        .addUpdateDiv {
+            position: absolute;
+        }
+
+        .user-row {
+            margin-bottom: 14px;
+        }
+
+            .user-row:last-child {
+                margin-bottom: 0;
+            }
+
+        .dropdown-user {
+            margin: 13px 0;
+            padding: 5px;
+            height: 100%;
+        }
+
+            .dropdown-user:hover {
+                cursor: pointer;
+            }
+
+        .table-user-information > tbody > tr {
+            border-top: 1px solid rgb(221, 221, 221);
+        }
+
+            .table-user-information > tbody > tr:first-child {
+                border-top: 0;
+            }
+
+
+            .table-user-information > tbody > tr > td {
+                border-top: 0;
+            }
+
+        .toppad {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+    <body ng-app="myApp">
+        <section >
+            <div ng-show="vm.loading"><img src="Images/Loading_icon.gif" /></div>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="pull-right">
+                    <div ng-if="vm.isLoggedIn()">
+                        <a>Hi! {{vm.currentUserName}}</a>
+                        <a class="btn btn-danger" ng-click="vm.logout()">Logout</a>
+                    </div>
+                    <!--<div ng-if="!vm.isLoggedIn()" class="btn btn-success" ng-click="vm.logout()" ui-sref="login">Login</div>-->
+                </div>
+            </nav>
+            <div class="nav-side-menu" style="z-index: 9999;" ng-if="vm.isLoggedIn()">
+                <div class="brand"><img src="/Images/MIS logo-06.png" width="80" height="auto" /></div>
+                <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#menu-content"></i>
+                <div class="menu-list">
+                    <ul id="menu-content" class="menu-content collapse out">
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-dashboard fa-lg"></i> Dashboard
+                            </a>
+                        </li>
+
+                        <li data-toggle="collapse" data-target="#academics" class="collapsed">
+                            <a href="#"><i class="fa fa-graduation-cap fa-lg"></i> Academics <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="academics">
+                            <li data-toggle="collapse" data-target="#students" class="collapsed">
+                                <a href="#"><i class="fa fa-users fa-lg"></i> Students <span class="arrow"></span></a>
+                            </li>
+                            <ul class="sub-menu collapse" id="students">
+                                <li ui-sref="students.add({action:'Add'})"><a>Add Student</a></li>
+                                <li ui-sref="students.search"><a>Search Student</a></li>
+                                <li ui-sref="students.settings"><a>Student Settings</a></li>
+                            </ul>
+                            <li data-toggle="collapse" data-target="#attendance" class="collapsed">
+                                <a href="#"><i class="fa fa-clock-o fa-lg"></i> Attendance<span class="arrow"></span></a>
+                            </li>
+                            <ul class="sub-menu collapse" id="attendance">
+                                <li ui-sref="attendance.add({action:'Add'})"><a>Attendance Entry</a></li>
+                                <li ui-sref="students.search"><a>Search Student</a></li>
+                                <li ui-sref="students.settings"><a>Student Settings</a></li>
+                            </ul>
+                            <li data-toggle="collapse" data-target="#academicSett" class="collapsed">
+                                <a href="#"><i class="fa fa-clock-o fa-lg"></i> Attendance<span class="arrow"></span></a>
+                            </li>
+                            <ul class="sub-menu collapse" id="academicSett">
+                                <li ui-sref="courses"><a>Courses</a></li>
+                                <li ui-sref="students.search"><a>Search Student</a></li>
+                                <li ui-sref="students.settings"><a>Student Settings</a></li>
+                            </ul>
+                        </ul>
+                        <li ng-if="vm.userType != 'T' " data-toggle="collapse" data-target="#administration" class="collapsed">
+                            <a href="#"><i class="fa fa-users fa-lg"></i> Administration <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="administration">
+                            <li data-toggle="collapse" data-target="#employee" class="collapsed">
+                                <a href="#"><i class="fa fa-users fa-lg"></i> Employee <span class="arrow"></span></a>
+                            </li>
+                            <ul class="sub-menu collapse" id="employee">
+                                <li ui-sref="employee.add({action:'Add'})"><a>Add Employee</a></li>
+                                <li ui-sref="employee.search"><a>Search Employee</a></li>
+                                <li ui-sref="employee.settings"><a>HR Settings</a></li>
+                            </ul>
+                            <li data-toggle="collapse" data-target="#finance" class="collapsed">
+                                <a href="#"><i class="fa fa-money fa-lg"></i> Finance <span class="arrow"></span></a>
+                            </li>
+                            <ul class="sub-menu collapse" id="finance">
+                                <li ui-sref="finance.fees"><a>Fees</a></li>
+                                <li ui-sref="finance.fees"><a>Search Employee</a></li>
+                                <li ui-sref="employee.settings"><a>HR Settings</a></li>
+                            </ul>
+                        </ul>
+                        <li data-toggle="collapse" data-target="#user" class="collapsed">
+                            <a href="#"><i class="fa fa-users fa-lg"></i> Users <span class="arrow"></span></a>
+                        </li>
+                        <ul class="sub-menu collapse" id="user">
+                            <li ui-sref="users.add({action:'Add'})"><a>Create User</a></li>
+                            <li ui-sref="users.search"><a>Search User</a></li>
+                            <li ui-sref="employee.settings"><a>User Settings</a></li>
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <section class="container body-content">
+            <div ui-view></div>
+        </section>
+    <!--<div ng-if="vm.isLoggedIn()" class="container">
+        <div ng-include="'/templates/account/login.html'"></div>
+    </div>-->
+        <script src="Scripts/angular.js"></script>
+        <script src="Scripts/angular-ui-router.js"></script>
+        <script src="Scripts/angular-resource.js"></script>
+        <script src="Scripts/angular-cookies.js"></script>
+
+        <script src="app/module/app.js"></script>
+        <script src="app/common/common.services.js"></script>
+        <script src="app/common/userAccount.js"></script>
+        <script src="app/common/currentUser.js"></script>
+        <script src="app/services/academics.js"></script>
+
+        <script src="app/controller/mainCtrl.js"></script>
+        <script src="app/controller/homeCtrl.js"></script>
+        <script src="app/controller/academicCtrl.js"></script>
+        
+
+</body>
+</html>

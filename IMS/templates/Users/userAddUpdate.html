@@ -1,0 +1,84 @@
+﻿<div class="container">
+    <h1 class="modal-header">{{Action}} User</h1>
+    <form class="form-horizontal" name="userForm">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">ID</label>
+            <div class="col-sm-10">
+                <input class="form-control" disabled="disabled" type="text" ng-model="UserID" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="NAME" required />
+                <div ng-messages="userForm.name.$error" ng-if="userForm.name.$touched">
+                    <p ng-message="required">Name is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">User Name</label>
+            <div class="col-sm-10">
+                <input name="Uname" class="form-control col-md-3" type="text" ng-model="UserName" required />
+                <div ng-messages="userForm.Uname.$error" ng-if="userForm.Uname.$touched">
+                    <p ng-message="required">Username is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-10">
+                <input name="Upassword" type="password" class="form-control col-md-3" ng-model="UserPassword" required />
+                <div ng-messages="userForm.Upassword.$error" ng-if="userForm.Upassword.$touched">
+                    <p ng-message="required">Password is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Access Role</label>
+            <div class="col-sm-10">
+                <input name="access" class="form-control col-md-3" type="text" ng-model="AccessRole" required />
+                <div ng-messages="userForm.access.$error" ng-if="userForm.access.$touched">
+                    <p ng-message="required">Access Level is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Status</label>
+            <div class="col-sm-10">
+                <input name="status" class="form-control col-md-3" type="text" ng-model="Status" required />
+                <div ng-messages="userForm.status.$error" ng-if="userForm.status.$touched">
+                    <p ng-message="required">Status Id is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Master ID</label>
+            <div class="col-sm-10">
+                <select class="col-sm-2 control-label" ng-model="userPrefix">
+                    <option value="">--Select--</option>
+                    <option value="T">Teacher</option>
+                    <option value="S">Student</option>
+                    <option></option>
+                </select>
+                <input name="MID" class="form-control col-md-3" type="text" ng-model="employeeID" required />
+               
+                <div ng-messages="userForm.MID.$error" ng-if="userForm.MID.$touched">
+                    <p ng-message="required">Master ID is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdate()" />
+                <input type="button" class="btn btn-primary" value="Cancel" ng-click="cancel()" />
+            </div>
+        </div>
+
+    </form>
+
+</div>
