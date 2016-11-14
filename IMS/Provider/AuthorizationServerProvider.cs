@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace IMS.Provider
@@ -28,7 +27,7 @@ namespace IMS.Provider
 
             //context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { allowedOrigin });
             context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin",
-               new[] { "http://localhost:52973" });
+               new[] { "http://localhost:63492" });
 
 
             // Validate your user and base on validation return claim identity or invalid_grant error
@@ -37,7 +36,7 @@ namespace IMS.Provider
 
             int checkUser = db.userAccounts.Where(x => x.UserName == user && x.UserPassword == password).Count();
 
-            if (((user == "admin") && (password == "admin")) || (checkUser == 1))
+            if (checkUser == 1)
             {
                 var identity = new ClaimsIdentity(context.Options.AuthenticationType);
                 identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));

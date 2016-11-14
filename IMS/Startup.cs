@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Owin;
 using Owin;
 using Microsoft.Owin.Security.OAuth;
@@ -24,7 +22,7 @@ namespace IMS
             ConfigureOAuth(app);
 
             WebApiConfig.Register(config);
-            app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
+            //app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
             app.UseWebApi(config);
         }
 

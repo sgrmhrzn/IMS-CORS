@@ -1,0 +1,297 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<section style="margin-top:20px" ng-controller="employeeCntrl">
+    <h1 class="modal-header">Employee Details</h1>
+    <h1></h1>
+    <div class="form-group">
+        <input type="text" class="form-control col-md-3" ng-model="search" />
+        <input type="button" class="btn btn-info" value="Search" ng-click="Search()" />
+        <input type="button" class="btn btn-success pull-right" value="Add Employee" ng-click="AddUpdateDiv()" />
+    </div>
+
+    <div class="divList">
+        <table class="table table-hover">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>Name</b></td>
+                <td><b>Address</b></td>
+                <td><b>Phone No</b></td>
+                <td><b>Mobile No</b></td>
+                @*<td><b>Email</b></td>
+                <td><b>Access Level</b></td>
+                <td><b>Permanent Address</b></td>
+                <td><b>Temporary Address</b></td>
+                <td><b>Date of Birth</b></td>
+                <td><b>Employee Categroy</b></td>
+                <td><b>National ID No</b></td>
+                <td><b>Marital Status</b></td>
+                <td><b>Gender</b></td>
+                <td><b>Qualification</b></td>
+                <td><b>Department</b></td>*@
+                <td><b>Action</b></td>
+
+
+            </tr>
+            <tr ng-repeat="emp in EMPLOYEE | filter: search">
+                <td>
+                    {{$index +1}}
+                </td>
+                <td>
+                    {{emp.NAME}}
+                </td>
+                <td>
+                    {{emp.ADDRESS}}
+                </td>
+                <td>
+                    {{emp.PHONE_NO}}
+                </td>
+                <td>
+                    {{emp.MOBILE_NO}}
+                </td>
+                @*<td>
+                    {{emp.EMAIL}}
+                </td>
+                <td>
+                    {{emp.ACCESS_LEVEL}}
+                </td>
+                <td>
+                    {{emp.PERMANENT_ADDRESS}}
+                </td>
+                <td>
+                    {{emp.TEMP_ADDRESS}}
+                </td>
+                <td>
+                    {{emp.DOB}}
+                </td>
+                <td>
+                    {{emp.TEACHER_OR_NONTEACHER}}
+                </td>
+                <td>
+                    {{emp.NATIONAL_ID_NO}}
+                </td>
+                <td>
+                    {{emp.MARITAL_STATUS}}
+                </td>
+                <td>
+                    {{emp.GENDER}}
+                </td>
+                <td>
+                    {{emp.QUALIFICATION}}
+                </td>
+                <td>
+                    {{emp.DEPTID}}
+                </td>*@
+                <td>
+                    <input type="button" class="btn btn-primary" value="Edit" ng-click="editRecord(emp)">
+                    <input type="button" ui-sref="EMPLOYEE.detailAsRoot({id:0})" class="btn btn-success" value="View" ng-click="detailView(emp)">
+                    <input type="button" class="btn btn-danger" value="Delete" ng-click="delete(emp)">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div ng-show="divAddUpdate" class="addUpdateDiv container">
+        <h1 class="modal-header">{{Action}} Employee</h1>
+        <form class="form-horizontal" name="employeeForm">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">ID</label>
+                <div class="col-sm-10">
+                    <input class="form-control" disabled="disabled" type="text" ng-model="ID" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-10">
+                    <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="NAME" required/>
+                    <div ng-messages="employeeForm.name.$error" ng-if="employeeForm.name.$touched">
+                        <p ng-message="required">Name is required!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="ADDRESS" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Permanent Address</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="PERMANENT_ADDRESS" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Temporary Address</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="TEMP_ADDRESS" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Phone No</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="PHONE_NO" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Mobile No</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="MOBILE_NO" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="EMAIL" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Designation</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="DESIGNATION" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Access Level</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="ACCESS_LEVEL" />
+                </div>
+            </div>
+
+            
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Date of Birth</label>
+                <div class="col-sm-10">
+                    <input type="date" class="form-control col-md-3" ng-model="DOB" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Employee Category</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="TEACHER_OR_NONTEACHER" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">National ID</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="NATIONAL_ID_NO" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Marital Status</label>
+                <div class="col-sm-10">
+                    <select class="form-control col-md-3" type="text" ng-model="MARITAL_STATUS">
+                        <option value="">--Select--</option>
+                        <option>Married</option>
+                        <option>Single</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Gender</label>
+                <div class="col-sm-10">
+                    <ng-form >
+                        <label><input type="radio" ng-model="GENDER" value="Male" />Male</label>
+                        <label><input type="radio" ng-model="GENDER" value="Female" />Female</label>
+                    </ng-form>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Qualification</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="QUALIFICATION" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Department</label>
+                <div class="col-sm-10">
+                    <input class="form-control col-md-3" type="text" ng-model="DEPTID" />
+                </div>
+            </div>
+            <div class="form-group pull-right">
+                <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdate()" />
+                <input type="button" class="btn btn-primary" value="Cancel" ng-click="cancel()" />
+            </div>
+        </form>
+
+    </div>
+
+    @*<div  class="addUpdateDiv container">
+        
+        <table class="form-group table-hover">
+            <h2 class="panel-heading">{{empDetail.NAME}}</h2>
+            <tr>
+                <td><b>Id</b></td>
+                <td>{{empDetail.ID}}</td>
+            </tr>
+            <tr>
+                <td><b>Address</b></td>
+                <td>{{empDetail.ADDRESS}}</td>
+            </tr>
+            <tr>
+                <td><b>Phone no</b></td>
+                <td>{{empDetail.PHONE_NO}}</td>
+            </tr>
+            <tr>
+                <td><b>Mobile no</b></td>
+                <td>{{empDetail.MOBILE_NO}}</td>
+            </tr>
+            <tr>
+                <td><b>Email</b></td>
+                <td>{{empDetail.EMAIL}}</td>
+            </tr>
+            <tr>
+                <td><b>Designation</b></td>
+                <td>{{empDetail.DESIGNATION}}</td>
+            </tr>
+            <tr>
+                <td><b>Access Level</b></td>
+                <td>{{empDetail.ACCESS_LEVEL}}</tr>
+            <tr>
+                <td><b>Permanent Address</b></td>
+                <td>{{empDetail.PERMANENT_ADDRESS}}</td>
+            </tr>
+            <tr>
+                <td><b>Temporary Address</b></td>
+                <td>{{empDetail.TEMP_ADDRESS}}</td>
+            </tr>
+            <tr>
+                <td><b>Date Of Birth</b></td>
+                <td>{{empDetail.DOB |  date:'yyyy-MM-dd'}}</td>
+            </tr>
+            <tr>
+                <td><b>Employee Category</b></td>
+                <td>{{empDetail.TEACHER_OR_NONTEACHER}}</td>
+            </tr>
+            <tr>
+                <td><b>National ID no</b></td>
+                <td>{{empDetail.NATIONAL_ID_NO}}</td>
+            </tr>
+            <tr>
+                <td><b>Marital Status</b></td>
+                <td>{{empDetail.MARITAL_STATUS}}</td>
+            </tr>
+            <tr>
+                <td><b>Gender</b></td>
+                <td>{{empDetail.GENDER}}</td>
+            </tr>
+            <tr>
+                <td><b>Qualification</b></td>
+                <td>{{empDetail.QUALIFICATION}}</td>
+            </tr>
+            <tr>
+                <td><b>Department</b></td>
+                <td>{{empDetail.DEPTID}}</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="pull-right">
+                    <input type="button" class="btn btn-primary" value="Cancel" ng-click="cancel()" />
+                </td>
+            </tr>
+        </table>
+    </div>*@
+
+</section>

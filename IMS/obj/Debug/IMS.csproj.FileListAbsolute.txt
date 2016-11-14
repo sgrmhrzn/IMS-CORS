@@ -118,7 +118,6 @@ H:\Projects\IMS-master\IMS\bin\Microsoft.AspNet.Identity.Core.dll
 H:\Projects\IMS-master\IMS\bin\Microsoft.AspNet.Identity.EntityFramework.dll
 H:\Projects\IMS-master\IMS\bin\Microsoft.AspNet.Identity.Owin.dll
 H:\Projects\IMS-master\IMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Cors.dll
 H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.dll
 H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Host.SystemWeb.dll
 H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Security.Cookies.dll
@@ -151,7 +150,6 @@ H:\Projects\IMS-master\IMS\bin\Microsoft.AI.Web.xml
 H:\Projects\IMS-master\IMS\bin\Microsoft.AI.WindowsServer.xml
 H:\Projects\IMS-master\IMS\bin\Microsoft.ApplicationInsights.xml
 H:\Projects\IMS-master\IMS\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Cors.xml
 H:\Projects\IMS-master\IMS\bin\System.Web.Http.Cors.xml
 H:\Projects\IMS-master\IMS\bin\Newtonsoft.Json.xml
 H:\Projects\IMS-master\IMS\bin\System.Net.Http.Formatting.xml
@@ -180,6 +178,5 @@ H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Security.Google.xml
 H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Security.Twitter.xml
 H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 H:\Projects\IMS-master\IMS\bin\System.Web.Http.Owin.xml
-H:\Projects\IMS-master\IMS\obj\Debug\IMS.csprojResolveAssemblyReference.cache
 H:\Projects\IMS-master\IMS\obj\Debug\IMS.dll
 H:\Projects\IMS-master\IMS\obj\Debug\IMS.pdb

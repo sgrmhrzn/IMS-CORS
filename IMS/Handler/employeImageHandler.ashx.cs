@@ -5,18 +5,25 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Http.Cors;
+//using Microsoft.AspNet.Cors;
 
 namespace IMS.Handler
 {
     /// <summary>
     /// Summary description for employeImageHandler
     /// </summary>
+    /// 
+    [EnableCorsAttribute("http://localhost:63492", "*", "*")]
     public class employeImageHandler : IHttpHandler
     {
 
         string connectionString = ConfigurationManager.ConnectionStrings["AbDataContext"].ConnectionString;
         public void ProcessRequest(HttpContext context)
         {
+            string origin = context.Request.Headers["Origin"];
+            string result = "OK";
+
             int ImageId = Convert.ToInt32(context.Request.QueryString["id"]);
             String strdata = "select Photo from EMPLOYEE where ID =@ID";
 
@@ -40,6 +47,16 @@ namespace IMS.Handler
 
                 cmd.Connection.Close();
             }
+        }
+        private void SetAllowCrossSiteRequestOrigin(HttpContext context)
+        {
+            string origin = context.Request.Headers["Origin"];
+            if (!String.IsNullOrEmpty(origin))
+                //You can make some sophisticated checks here
+                context.Response.AppendHeader("Access-Control-Allow-Origin", origin);
+            else
+                //This is necessary for Chrome/Safari actual request
+                context.Response.AppendHeader("Access-Control-Allow-Origin", "*");
         }
 
         public bool IsReusable

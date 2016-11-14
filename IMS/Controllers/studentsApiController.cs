@@ -2,18 +2,21 @@
 using IMS.Data;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace IMS.Controllers
 {
+    [EnableCorsAttribute("http://localhost:63492", "*", "*")]
+
     public class studentsApiController : ApiController
     {
         private AbDataContext db = new AbDataContext();
         // GET: api/Test
+        [Route("api/studentsApi/getAll")]
         public IEnumerable<Student> Get()
         {
             //return new string[] { "value1", "value2" };

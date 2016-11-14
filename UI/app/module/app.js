@@ -41,7 +41,54 @@
                     }
                 },
             })
+             .state('employee', {
+                 url: '/employee',
+                 templateUrl: 'templates/employee/Index.html',
+                 controller: 'employeeCntrl'
+             })
+    .state('employee.detailAsRoot', {
+        url: '^/profile/:id',
+        views: {
+            '@': {
+                templateUrl: 'templates/employee/profile.html',
+                controller: 'singleEmployeeCntrl'
+            }
+        },
+    }).state('employee.add', {
+        url: '^/employee/:action',
+        views: {
+            '@': {
+                templateUrl: 'templates/employee/addUpdate.html',
+                controller: 'singleEmployeeCntrl'
+            }
+        },
+    }).state('employee.Update', {
+        url: '^/update?id&action',
+        views: {
+            '@': {
+                templateUrl: 'templates/employee/addUpdate.html',
+                controller: 'singleEmployeeCntrl'
+            }
+        },
+    }).state('employee.search', {
+        url: '^/search',
+        views: {
+            '@': {
+                templateUrl: 'templates/employee/Search.html',
+                controller: 'employeeCntrl',
+            }
+        },
+    }).state('employee.settings', {
+        url: '^/settings',
+        views: {
+            '@': {
+                templateUrl: 'templates/employee/EMPsettings.html',
+                controller: 'employeeSettingsCntrl',
+            }
+        },
+    })
         }])
+
   //      .config(['$urlRouterProvider',
   //function ($urlRouterProvider) {
 

@@ -1,0 +1,43 @@
+﻿<section>
+    <h2 class="modal-header">Employee Details</h2>
+    <div class="form-group">
+        <input type="text" class="form-control col-md-3" ng-model="search" />
+        <input type="button" class="btn btn-info" value="Search" ng-click="Search()" />
+    </div>
+
+    <div class="divList">
+        <table class="table table-hover">
+            <tr>
+                <td><b>ID</b></td>
+                <td><b>Name</b></td>
+                <td><b>Phone No</b></td>
+                <td><b>Mobile No</b></td>
+                <td><b>Email</b></td>
+                <td><b>Action</b></td>
+
+            </tr>
+            <tr ng-repeat="emp in EMPLOYEE | filter: {'NAME':search}">
+                <td>
+                    {{$index +1}}
+                </td>
+                <td>
+                    {{emp.NAME}}
+                </td>
+                <td>
+                    {{emp.PHONE_NO}}
+                </td>
+                <td>
+                    {{emp.MOBILE_NO}}
+                </td>
+                <td>
+                    {{emp.EMAIL}}
+                </td>
+                <td>
+                    <a ui-sref="employee.detailAsRoot({id:emp.ID})" class="btn btn-success" value="View"><i class="glyphicon glyphicon-user"> </i>View</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</section>
