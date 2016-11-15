@@ -1,0 +1,57 @@
+﻿<section>
+    <h2 class="modal-header">Fees</h2>
+    <div class="form-group">
+        <input type="text" class="form-control col-md-3" ng-model="search" />
+        <input type="button" class="btn btn-info" value="Search" ng-click="Search()" />
+        <input ui-sref="finance.fees.create({action:'Add'})" type="button" class="btn btn-primary" value="Create Fees"/>
+        <input type="button" class="btn btn-primary" value="Create Category" />
+    </div>
+
+    <div class="divList">
+        <table class="table table-hover">
+            <tr>
+                <td><b>#</b></td>
+                <td><b>Category</b></td>
+                <td><b>Class</b></td>
+                <td><b>Admission Fee</b></td>
+                <td><b>Monthly Fee</b></td>
+                <td><b>Extra Curricular Charge</b></td>
+                <td><b>Exam Fee</b></td>
+                <td><b>Late Fee Charge</b></td>
+                <td><b>Action</b></td>
+
+            </tr>
+            <tr ng-repeat="feeStr in FeeStructure | filter: {'NAME':search}">
+                <td>
+                    {{$index +1}}
+                </td>
+                <td>
+                    {{feeStr.Category}}
+                </td>
+                <td>
+                    {{feeStr.Class}}
+                </td>
+                <td>
+                    {{feeStr.AdmissionFee}}
+                </td>
+                <td>
+                    {{feeStr.MonthlyFee}}
+                </td>
+                <td>
+                    {{feeStr.ExtraCurricularActivity}}
+                </td>
+                <td>
+                    {{feeStr.ExamFee}}
+                </td>
+                <td>
+                    {{feeStr.LateFeeCharge}}
+                </td>
+                <td>
+                    <a ui-sref="finance.fees.update({id:feeStr.ID, action: 'Update'})" class="btn btn-success" value="View"><i class="glyphicon glyphicon-edit"> </i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</section>

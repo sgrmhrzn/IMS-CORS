@@ -14,12 +14,14 @@ namespace IMS.Controllers
     {
         private AbDataContext db = new AbDataContext();
         // GET: api/Test
+        [HttpGet]
         public IEnumerable<Student> Get()
         {
             //return new string[] { "value1", "value2" };
             return db.students.Include("studentDetails").AsEnumerable();
         }
 
+        [HttpGet]
         // GET: api/Test/5
         public Student Get(string id)
         {
@@ -42,7 +44,6 @@ namespace IMS.Controllers
                 base64ToByte baseBytes = new base64ToByte();
                 std.Photo = baseBytes.image(300, 300, base64Data);
             }
-
             db.students.Add(std);
             db.SaveChanges();
             return Request.CreateResponse(HttpStatusCode.OK, "Added!");
@@ -118,7 +119,7 @@ namespace IMS.Controllers
         public IEnumerable<StdAttendance> getAttendance()
         {
             //return new string[] { "value1", "value2" };
-            return db.stdAttendance.Include().AsEnumerable();
+            return db.stdAttendance.AsEnumerable();
         }
 
         [Route("api/academic/attendance/add")]

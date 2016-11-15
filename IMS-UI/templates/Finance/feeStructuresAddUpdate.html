@@ -1,0 +1,85 @@
+﻿<div class="container">
+    <h1 class="modal-header">{{Action}} Fees</h1>
+    <form class="form-horizontal" name="feeStructureForm">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">ID</label>
+            <div class="col-sm-10">
+                <input class="form-control" disabled="disabled" type="text" ng-model="ID" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Class</label>
+            <div class="col-sm-10">
+                <input name="class" ng-true-value="" class="form-control col-md-3" type="text" ng-model="Class" required />
+                <div ng-messages="feeStructureForm.class.$error" ng-if="feeStructureForm.class.$touched">
+                    <p ng-message="required">{{requiredMessage}}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Category</label>
+            <div class="col-sm-10">
+                <input name="category" type="text" class="form-control col-md-3" ng-model="Category" required />
+                <div ng-messages="feeStructureForm.category.$error" ng-if="feeStructureForm.category.$touched">
+                    <p ng-message="required">{{requiredMessage}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Admission Fee</label>
+            <div class="col-sm-10">
+                <input name="admission" class="form-control col-md-3" type="number" ng-model="AdmissionFee" required />
+                <div ng-messages="feeStructureForm.admission.$error" ng-if="feeStructureForm.admission.$touched">
+                    <p ng-message="required">{{requiredMessage}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Monthly Fee</label>
+            <div class="col-sm-10">
+                <input name="monthlyFee" class="form-control col-md-3" type="number" ng-model="MonthlyFee" required />
+                <div ng-messages="feeStructureForm.monthlyFee.$error" ng-if="feeStructureForm.monthlyFee.$touched">
+                    <p ng-message="required">{{requiredMessage}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Extra Curricular Activity</label>
+            <div class="col-sm-10">
+                <input name="add" class="form-control col-md-3" type="number" ng-model="ExtraCurricularActivity" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Exam Fee</label>
+            <div class="col-sm-10">
+                <input name="examFee" type="number" class="form-control col-md-3" ng-model="ExamFee" required />
+                <div ng-messages="feeStructureForm.examFee.$error" ng-if="feeStructureForm.examFee.$touched">
+                    <p ng-message="required">{{requiredMessage}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Late Fee Charge</label>
+            <div class="col-sm-10">
+                <input name="latefee" class="form-control col-md-3" type="number" ng-model="LateFeeCharge" required />
+                <div ng-messages="feeStructureForm.latefee.$error" ng-if="feeStructureForm.latefee.$touched">
+                    <p ng-message="required">{{requiredMessage}}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdate()" />
+                <input type="button" class="btn btn-primary" value="Cancel" ng-click="cancel()" />
+            </div>
+        </div>
+    </form>
+</div>

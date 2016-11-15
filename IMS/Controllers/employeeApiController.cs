@@ -7,9 +7,12 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace IMS.Controllers
 {
+    [EnableCorsAttribute("http://localhost:50922", "*", "*")]
+    [Authorize()]
     public class employeeApiController : ApiController
     {
         private AbDataContext db = new AbDataContext();

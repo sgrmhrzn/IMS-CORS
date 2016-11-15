@@ -1,0 +1,105 @@
+﻿
+<div class="container">
+    <h2 class="modal-header">Profile</h2>
+
+    <div class="row">
+        <!--<div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+            <A href="edit.html">Edit Profile</A>
+
+            <A href="edit.html">Logout</A>
+            <br>
+            <p class="text-info">May 05,2014,03:00 pm </p>
+        </div>-->
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 toppad">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{profile.NAME}}</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" ng-src="{{serverPath}}/Handler/employeImageHandler.ashx?id={{profile.ID}}" class="img-circle img-responsive"> </div>
+                        <div class="col-md-9 col-lg-9 ">
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td><b>Employee ID</b></td>
+                                        <td>{{profile.ID}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Gender</b></td>
+                                        <td ng-if="profile.GENDER == 'M'">Male</td>
+                                        <td ng-if="profile.GENDER == 'F'">Female</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Marital Status</b></td>
+                                        <td ng-if="profile.MARITAL_STATUS == 'M'">Married</td>
+                                        <td ng-if="profile.MARITAL_STATUS == 'S'">Single</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Permanent Address</b></td>
+                                        <td>{{profile.PERMANENT_ADDRESS}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Temporary Address</b></td>
+                                        <td>{{profile.TEMP_ADDRESS}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Date of Birth</b></td>
+                                        <td>{{profile.DOB |  date:'yyyy-MM-dd'}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Email</b></td>
+                                        <td>{{profile.EMAIL}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Designation</b></td>
+                                        <td>{{profile.DESIGNATION}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Employee Category</b></td>
+                                        <td ng-if="profile.TEACHER_OR_NONTEACHER == 'T'">Techer</td>
+                                        <td ng-if="profile.TEACHER_OR_NONTEACHER == 'N'">Non-Techer</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>National ID no</b></td>
+                                        <td>{{profile.NATIONAL_ID_NO}}</td>
+                                    </tr>
+                                    
+                                    <tr>
+                                        <td><b>Qualification</b></td>
+                                        <td>{{profile.QUALIFICATION}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Department</b></td>
+                                        <td>{{profile.departments.DEPTNAME}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Phone Number</b></td>
+                                        <td>
+                                            {{profile.PHONE_NO}}(Landline)<br><br>{{profile.MOBILE_NO}}(Mobile)
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+
+                            <!--<a href="#" class="btn btn-primary">My Sales Performance</a>
+                            <a href="#" class="btn btn-primary">Team Sales Performance</a>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
+                    <span class="pull-right">
+                        <a data-original-title="Edit this user" ui-sref="employee.Update({id:profile.ID, action:'Update'})" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editRecord(profile)"><i class="glyphicon glyphicon-edit" ></i></a>
+                        <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" ng-click="delete(profile)"><i class="glyphicon glyphicon-remove"></i></a>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

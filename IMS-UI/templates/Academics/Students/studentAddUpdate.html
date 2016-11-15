@@ -1,0 +1,291 @@
+﻿<div class="container">
+    <h1 class="modal-header">{{Action}} Student</h1>
+    <form class="form-horizontal" name="studentsForm">
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">ID</label>
+            <div class="col-sm-10">
+                <input class="form-control" disabled="disabled" type="text" ng-model="ID" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-10">
+                <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="NAME" required />
+                <div ng-messages="studentsForm.name.$error" ng-if="studentsForm.name.$touched">
+                    <p ng-message="required">Name is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Gender</label>
+            <div class="col-sm-10">
+                <ng-form>
+                    <label><input name="gender" type="radio" ng-model="GENDER" value="M" required />Male</label>
+                    <label><input name="gender" type="radio" ng-model="GENDER" value="F" required />Female</label>
+                </ng-form>
+                <div ng-messages="studentsForm.gender.$error" ng-if="studentsForm.gender.$touched">
+                    <p ng-message="required">Gender is required!</p>
+                </div>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Date of Birth</label>
+            <div class="col-sm-10">
+                <input name="dob" type="date" class="form-control col-md-3" ng-model="DOB" required />
+                <div ng-messages="studentsForm.dob.$error" ng-if="studentsForm.dob.$touched">
+                    <p ng-message="required">DOB is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Class</label>
+            <div class="col-sm-10">
+                <input typeof="text" name="marital" class="form-control col-md-3" type="text" ng-model="CLASS" required />
+                <div ng-messages="studentsForm.marital.$error" ng-if="studentsForm.marital.$touched">
+                    <p ng-message="required">Marital Status is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Nationality</label>
+            <div class="col-sm-10">
+                <input name="nationalID" class="form-control col-md-3" type="text" ng-model="NATIONALITY" required />
+                <div ng-messages="studentsForm.nationalID.$error" ng-if="studentsForm.nationalID.$touched">
+                    <p ng-message="required">National Id is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Address</label>
+            <div class="col-sm-10">
+                <input name="add" class="form-control col-md-3" type="text" ng-model="ADDRESS" required />
+                <div ng-messages="studentsForm.add.$error" ng-if="studentsForm.add.$touched">
+                    <p ng-message="required">Address Id is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Phone No</label>
+            <div class="col-sm-10">
+                <input name="phone" type="number" class="form-control col-md-3" ng-model="PHONENO" required />
+                <div ng-messages="studentsForm.phone.$error" ng-if="studentsForm.phone.$touched">
+                    <p ng-message="required">Phone no is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Student Category</label>
+            <div class="col-sm-10">
+                <select name="category" class="form-control col-md-3" type="text" ng-model="Category" required>
+                    <option value="">--Select--</option>
+                    <option value="T">Teacher</option>
+                    <option value="N">Non-Teacher</option>
+                </select>
+                <div ng-messages="studentsForm.category.$error" ng-if="studentsForm.category.$touched">
+                    <p ng-message="required">Category is required!</p>
+                </div>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Enrolled Date</label>
+            <div class="col-sm-10">
+                <input name="joinDate" class="form-control col-md-3" type="date" ng-model="ENROLLEDYEAR" required/>
+                <div ng-messages="studentsForm.joinDate.$error" ng-if="studentsForm.joinDate.$touched">
+                    <p ng-message="required">Join Date is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="attachment" class="col-sm-2 control-label">Image</label>
+            <section class="uploadMain col-sm-9">
+                <div ng-show="imageCropStep == 1">
+                    <br />
+                    <input type="file" name="fileInput" id="fileInput" onchange="angular.element(this).scope().fileChanged(event)" class="form-control col-md-3"/>
+                </div>
+
+                <div ng-show="imageCropStep == 2">
+                    <!-- <image-crop
+                  data-height="200" //shape's height
+                  data-width="150" //shape's width
+                  data-shape="square" //the shape.. square or circle
+                  data-step="imageCropStep"//scope variable that will contain the current step of the crop (1. Waiting for source image; 2. Image loaded, waiting for crop; 3. Crop done)
+                  src="imgSrc" //scope variable that will be the source image for the crop (may be a Blob or base64 string)
+                  data-result-blob="result" //scope variable that will contain the Blob information
+                  data-result="resultDataUrl" //scope variable that will contain the image's base64 string representation
+                  crop="initCrop" //scope variable that must be set to true when the image is ready to be cropped
+                  padding="250" //space, in pixels, rounding the shape
+                  max-size="1024" //max of the image, in pixels
+                ></image-crop> -->
+
+                    <image-crop data-height="350"
+                                data-width="350"
+                                data-shape="square"
+                                data-step="imageCropStep"
+                                src="imgSrc"
+                                data-result="result"
+                                data-result-blob="resultBlob"
+                                crop="initCrop"
+                                padding="100"
+                                max-size="1024"></image-crop>
+                </div>
+
+                <div ng-show="imageCropStep == 2">
+                    <br />
+                    <button ng-click="clear()">Cancel</button>
+                    <button ng-click="initCrop = true">Crop</button>
+                </div>
+
+                <div ng-show="imageCropStep == 3">
+                    <img ng-src="{{result}}" class="cropped" ng-model="base64"></img>
+
+                    <button ng-click="clear()">Cancel</button>
+
+                </div>
+
+            </section>
+
+        </div>
+
+        <h1 class="modal-header">Parents Detail</h1>
+
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">First Name</label>
+            <div class="col-sm-10">
+                <input name="FName" type="text" class="form-control col-md-3" ng-model="GUARDIAN_FIRSTNAME" required />
+                <div ng-messages="studentsForm.FName.$error" ng-if="studentsForm.FName.$touched">
+                    <p ng-message="required">First Name is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Last Name</label>
+            <div class="col-sm-10">
+                <input name="LName" type="text" class="form-control col-md-3" ng-model="GUARDIAN_LASTNAME" required />
+                <div ng-messages="studentsForm.LName.$error" ng-if="studentsForm.LName.$touched">
+                    <p ng-message="required">Last Name is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Phone No</label>
+            <div class="col-sm-10">
+                <input name="Gphone" class="form-control col-md-3" type="text" ng-model="GUARDIAN_PHONE" required />
+                <div ng-messages="studentsForm.Gphone.$error" ng-if="studentsForm.Gphone.$touched">
+                    <p ng-message="required">Phone no is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Mobile No</label>
+            <div class="col-sm-10">
+                <input class="form-control col-md-3" name="Gmobile" type="text" ng-model="GUARDIAN_MOBILE" value="M" required />
+                <div ng-messages="studentsForm.Gmobile.$error" ng-if="studentsForm.Gmobile.$touched">
+                    <p ng-message="required">Mobile no is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-10">
+                <input name="Email" type="email" class="form-control col-md-3" ng-model="GUARDIAN_EMAIL" required />
+                <div ng-messages="studentsForm.Email.$error" ng-if="studentsForm.Email.$touched">
+                    <p ng-message="required">Email is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Relation</label>
+            <div class="col-sm-10">
+                <input name="relation" type="text" class="form-control col-md-3" ng-model="GUARDIAN_Relation" required />
+                <div ng-messages="studentsForm.relation.$error" ng-if="studentsForm.relation.$touched">
+                    <p ng-message="required">Relation is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Date of Birth</label>
+            <div class="col-sm-10">
+                <input name="Pdob" type="date" class="form-control col-md-3" ng-model="GUARDIAN_DOB" required />
+                <div ng-messages="studentsForm.Pdob.$error" ng-if="studentsForm.Pdob.$touched">
+                    <p ng-message="required">DOB is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Education</label>
+            <div class="col-sm-10">
+                <input typeof="text" name="education" class="form-control col-md-3" type="text" ng-model="GUARDIAN_Education" required />
+                <div ng-messages="studentsForm.education.$error" ng-if="studentsForm.education.$touched">
+                    <p ng-message="required">Education is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Occupation</label>
+            <div class="col-sm-10">
+                <input name="Occupation" class="form-control col-md-3" type="text" ng-model="GUARDIAN_Occupation" required />
+                <div ng-messages="studentsForm.Occupation.$error" ng-if="studentsForm.Occupation.$touched">
+                    <p ng-message="required">Occupation Id is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Income</label>
+            <div class="col-sm-10">
+                <input name="Income" type="text" class="form-control col-md-3" ng-model="GUARDIAN_Income" required />
+                <div ng-messages="studentsForm.Income.$error" ng-if="studentsForm.Income.$touched">
+                    <p ng-message="required">Income is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">State</label>
+            <div class="col-sm-10">
+                <input name="State" type="text" class="form-control col-md-3" ng-model="GUARDIAN_State" required />
+                <div ng-messages="studentsForm.State.$error" ng-if="studentsForm.State.$touched">
+                    <p ng-message="required">State is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Country</label>
+            <div class="col-sm-10">
+                <input name="Country" type="text" class="form-control col-md-3" ng-model="GUARDIAN_Country" required />
+                <div ng-messages="studentsForm.Country.$error" ng-if="studentsForm.Country.$touched">
+                    <p ng-message="required">Country is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">AddLine1</label>
+            <div class="col-sm-10">
+                <input name="AddLine1" type="text" class="form-control col-md-3" ng-model="GUARDIAN_AddLine1"  />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">AddLine2</label>
+            <div class="col-sm-10">
+                <input name="AddLine2" type="text" class="form-control col-md-3" ng-model="GUARDIAN_AddLine2"  />
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdate()" />
+                <input type="button" class="btn btn-primary" value="Cancel" ng-click="cancel()" />
+            </div>
+
+        </div>
+
+    </form>
+
+</div>

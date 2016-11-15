@@ -5,6 +5,8 @@ using System.Net.Http;
 using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Newtonsoft.Json.Serialization;
+using System.Web.Http.Cors;
+using System.Net.Http.Headers;
 
 namespace IMS
 {
@@ -19,6 +21,16 @@ namespace IMS
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            //config.Formatters.JsonFormatter.SerializerSettings.ContractResolver =
+            //    new CamelCasePropertyNamesContractResolver();
+
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+            var cors = new EnableCorsAttribute("http://localhost:50922", "*", "*");
+            config.EnableCors(cors);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

@@ -3,10 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
 
 namespace IMS.Core
 {
+    //[Serializable]
+    //[DataContract(IsReference = true)]
     public class STUDENT_DETAILS
     {
         [Key]
