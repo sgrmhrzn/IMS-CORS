@@ -26,7 +26,7 @@
             this.updateBatch = function (batch) {
                 var response = $http({
                     method: "post",
-                    url: appSettings.serverPath + "/api/academics/updateBatch/" + batch.ID,
+                    url: appSettings.serverPath + "/api/academics/updateBatch",
                     data: JSON.stringify(batch),
                     dataType: "json",
                 });
@@ -84,7 +84,7 @@
         this.updateRecord = function (record) {
             var response = $http({
                 method: "post",
-                url: appSettings.serverPath + "/api/academics/update/" + record.CourseID,
+                url: appSettings.serverPath + "/api/academics/updateCourse",
                 data: JSON.stringify(record),
                 dataType: "json"
             });

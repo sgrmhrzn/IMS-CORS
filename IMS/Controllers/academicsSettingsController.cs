@@ -43,7 +43,7 @@ namespace IMS.Controllers
             }
         }
 
-        [Route("updateBatch/{id}")]
+        [Route("updateBatch")]
         [HttpPost, HttpGet]
         [System.Web.Http.AcceptVerbs("GET", "POST")]
         public string updateBatch(BatchCreation batch)
@@ -111,7 +111,7 @@ namespace IMS.Controllers
             }
         }
 
-        [Route("updateCourse/{id}")]
+        [Route("updateCourse")]
         [HttpPost]
         public string updateCourse(Courses course)
         {
