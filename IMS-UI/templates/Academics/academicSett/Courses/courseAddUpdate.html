@@ -1,17 +1,17 @@
 ﻿<div class="container">
-    <h1 class="modal-header">{{Action}} Student</h1>
+    <h1 class="modal-header">{{Action}} Course</h1>
     <form class="form-horizontal" name="studentsForm">
         
         <div class="form-group">
             <label class="col-sm-2 control-label">ID</label>
             <div class="col-sm-10">
-                <input class="form-control" disabled="disabled" type="text" ng-model="vm.courseData.CourseID" />
+                <input class="form-control" disabled="disabled" type="text" ng-model="ID" />
             </div>
         </div>
         <div class="form-group">
             <label class="col-sm-2 control-label">Name</label>
             <div class="col-sm-10">
-                <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="vm.courseData.CourseName" required />
+                <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="CourseName" required />
                 <div ng-messages="studentsForm.name.$error" ng-if="studentsForm.name.$touched">
                     <p ng-message="required">Name is required!</p>
                 </div>
@@ -21,7 +21,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Class</label>
             <div class="col-sm-10">
-                <input name="marital" class="form-control col-md-3" type="text" ng-model="vm.courseData.CourseLevel" required />
+                <input name="marital" class="form-control col-md-3" type="text" ng-model="CourseLevel" required />
                 <div ng-messages="sudentsForm.marital.$error" ng-if="studentsForm.marital.$touched">
                     <p ng-message="required">Marital Status is required!</p>
                 </div>
@@ -31,7 +31,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Nationality</label>
             <div class="col-sm-10">
-                <input name="nationalID" class="form-control col-md-3" type="text" ng-model="vm.courseData.CourseInstructor1" required />
+                <input name="nationalID" class="form-control col-md-3" type="text" ng-model="CourseInstructor1" required />
                 <div ng-messages="studentsForm.nationalID.$error" ng-if="studentsForm.nationalID.$touched">
                     <p ng-message="required">National Id is required!</p>
                 </div>
@@ -41,7 +41,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Address</label>
             <div class="col-sm-10">
-                <input name="add" class="form-control col-md-3" type="text" ng-model="vm.courseData.CourseInstructor2" required />
+                <input name="add" class="form-control col-md-3" type="text" ng-model="CourseInstructor2" required />
                 <div ng-messages="studentsForm.add.$error" ng-if="studentsForm.add.$touched">
                     <p ng-message="required">Address Id is required!</p>
                 </div>
@@ -50,7 +50,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Phone No</label>
             <div class="col-sm-10">
-                <input name="phone" type="text" class="form-control col-md-3" ng-model="vm.courseData.CourseInstructor3" required />
+                <input name="phone" type="text" class="form-control col-md-3" ng-model="CourseInstructor3" required />
                 <div ng-messages="studentsForm.phone.$error" ng-if="studentsForm.phone.$touched">
                     <p ng-message="required">Phone no is required!</p>
                 </div>
@@ -60,7 +60,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Enrolled Date</label>
             <div class="col-sm-10">
-                <input name="joinDate" class="form-control col-md-3" type="text" ng-model="vm.courseData.ClassNo" required/>
+                <input name="joinDate" class="form-control col-md-3" type="text" ng-model="ClassNo" required/>
                 <div ng-messages="studentsForm.joinDate.$error" ng-if="studentsForm.joinDate.$touched">
                     <p ng-message="required">Join Date is required!</p>
                 </div>
@@ -70,7 +70,7 @@
         <div class="form-group">
             <label class="col-sm-2 control-label"></label>
             <div class="col-sm-10">
-                <input type="button" class="btn btn-success" value="Save" ng-click="vm.addUpdate()" />
+                <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdate()" />
             </div>
         </div>
     </form>

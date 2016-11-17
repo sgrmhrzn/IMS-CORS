@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html >
+<html>
 <head>
     <title></title>
     <meta charset="utf-8" />
@@ -9,14 +9,23 @@
     <link href="Content/imageCropperStyle.css" rel="stylesheet" />
 
     <style>
-        .loading-div{width: 5%;margin: auto;}
-         .loading{margin:auto;position: absolute;width: 3%;z-index: 999;padding:15px;top: 370px;}   
+        .loading-div {
+            width: 5%;
+            margin: auto;
+        }
+
+        .loading {
+            margin: auto;
+            position: absolute;
+            width: 3%;
+            z-index: 999;
+            padding: 15px;
+            top: 370px;
+        }
     </style>
 
     <script src="Scripts/jquery-1.10.2.min.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-
-   
 
     <script>
         $(document).ready(function () {
@@ -128,43 +137,47 @@
     </style>
 </head>
 
-    <body ng-app="myApp">
-        <div ng-include="'nav.html'"></div>
-        <section class="container body-content">
-            <div ui-view></div>
-        </section>
+<body ng-app="myApp">
+    <div ng-include="'nav.html'"></div>
+    <section class="container body-content">
+        <div ui-view></div>
+    </section>
     <!--<div ng-if="vm.isLoggedIn()" class="container">
         <div ng-include="'/templates/account/login.html'"></div>
     </div>-->
-        <script src="Scripts/angular.js"></script>
-        <script src="Scripts/angular-ui-router.js"></script>
-        <script src="Scripts/angular-resource.js"></script>
-        <script src="Scripts/angular-cookies.js"></script>
-        <script src="app/image-crop.js"></script>
-        <script src="Scripts/angular-messages.min.js"></script>
+    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/angular-ui-router.js"></script>
+    <script src="Scripts/angular-resource.js"></script>
+    <script src="Scripts/angular-cookies.js"></script>
+    <script src="app/image-crop.js"></script>
+    <script src="Scripts/angular-messages.min.js"></script>
 
-        <script src="app/module/app.js"></script>
-        <script src="app/common/common.services.js"></script>
-        <script src="app/common/userAccount.js"></script>
-        <script src="app/common/currentUser.js"></script>
-        <script src="app/services/academics.js"></script>
+    <script src="app/module/app.js"></script>
+    <script src="app/common/common.services.js"></script>
+    <script src="app/common/userAccount.js"></script>
+    <script src="app/common/currentUser.js"></script>
+    <!--<script src="app/services/academics.js"></script>-->
 
-        <script src="app/controller/mainCtrl.js"></script>
-        <script src="app/controller/homeCtrl.js"></script>
-        <script src="app/controller/academicCtrl.js"></script>
+    <script src="app/controller/mainCtrl.js"></script>
+    <script src="app/controller/homeCtrl.js"></script>
+    <!--<script src="app/controller/academicCtrl.js"></script>-->
 
-        <script src="app/Employee/employeeService.js"></script>
-        <script src="app/Employee/employeeController.js"></script>
-        <script src="app/Employee/employeeSettingsController.js"></script>
-        <script src="app/Employee/employeeSettingsService.js"></script>
+    <script src="app/Employee/employeeService.js"></script>
+    <script src="app/Employee/employeeController.js"></script>
+    <script src="app/Employee/employeeSettingsController.js"></script>
+    <script src="app/Employee/employeeSettingsService.js"></script>
 
-        <script src="app/Users/usersService.js"></script>
-        <script src="app/Users/usersController.js"></script>
+    <script src="app/Users/usersService.js"></script>
+    <script src="app/Users/usersController.js"></script>
 
-        <script src="app/Students/studentsController.js"></script>
-        <script src="app/Students/studentsService.js"></script>
+    <script src="app/Academics/Students/studentsController.js"></script>
+    <script src="app/Academics/Students/studentsService.js"></script>
 
-        <script src="app/Finance/financeController.js"></script>
-        <script src="app/Finance/financeService.js"></script>
+    <script src="app/Academics/academicsSettings/academicsSettService.js"></script>
+    <script src="app/Academics/academicsSettings/academicsSettCtrl.js"></script>
+
+    <script src="app/Finance/financeController.js"></script>
+    <script src="app/Finance/financeService.js"></script>
 </body>
 </html>
+

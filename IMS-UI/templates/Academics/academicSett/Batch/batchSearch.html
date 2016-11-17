@@ -1,0 +1,46 @@
+﻿<section>
+    <h2 class="modal-header">Batches</h2>
+    <div class="form-group">
+        <input type="text" class="form-control col-md-3" ng-model="search" />
+        <input type="button" class="btn btn-info" value="Search" ng-click="Search()" />
+        <input type="button" ui-sref="batches.addUpdate({action:'Add'})" class="btn btn-success" value="Add Batch" />
+        <input type="button" ui-sref="" class="btn btn-warning" value="Add Class/ Assign Class Teacher" />
+    </div>
+
+    <div class="divList">
+        <table class="table table-hover">
+            <tr>
+                <td><b>#</b></td>
+                <td><b>Batch Name</b></td>
+                <td><b>Class</b></td>
+                <td><b>Total Students</b></td>
+                <td><b>Section</b></td>
+                <td><b>Action</b></td>
+
+            </tr>
+            <tr ng-repeat="batch in batches | filter: {'NAME':search}">
+                <td>
+                    {{$index +1}}
+                </td>
+                <td>
+                    {{batch.BatchName}}
+                </td>
+                <td>
+                    {{batch.Class}}
+                </td>
+                <td>
+                    {{batch.MaxNoOfStds}}
+                </td>
+                <td>
+                    {{batch.Section}}
+                </td>
+                <td>
+                    <a ui-sref="batches.addUpdate({id:batch.ID, action:'Update'})" class="btn btn-success" value="View"><i class="glyphicon glyphicon-edit"> </i></a>
+                    <a class="btn btn-danger" value="View" ng-click="delete(batch);"><i class="glyphicon glyphicon-remove"> </i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</section>

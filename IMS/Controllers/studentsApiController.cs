@@ -50,7 +50,7 @@ namespace IMS.Controllers
         }
 
         [Route("api/studentsApi/update/{id}")]
-        [System.Web.Http.AcceptVerbs("GET", "POST")]
+        [AcceptVerbs("GET", "POST")]
         [HttpPost, HttpGet]
         public string Put(Student std)
         {

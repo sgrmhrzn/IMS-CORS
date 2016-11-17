@@ -244,6 +244,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\adminSettingsController.cs" />
+    <Compile Include="Controllers\academicsSettingsController.cs" />
     <Compile Include="Controllers\financeApiController.cs" />
     <Compile Include="Controllers\studentsApiController.cs" />
     <Compile Include="Controllers\usersApiController.cs" />
@@ -253,7 +254,10 @@
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\employeeSettingsApiController.cs" />
+    <Compile Include="Core\BatchCreation.cs" />
+    <Compile Include="Core\CLASS.cs" />
     <Compile Include="Core\EmpAttendance.cs" />
+    <Compile Include="Core\TeacherTimeTable.cs" />
     <Compile Include="Core\StdAttendance.cs" />
     <Compile Include="Core\Fees.cs" />
     <Compile Include="Core\FeeStructure.cs" />

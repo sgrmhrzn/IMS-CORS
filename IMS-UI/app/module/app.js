@@ -23,24 +23,6 @@
                     }
                 },
             })
-            .state('courses', {
-                url: '/course',
-                views: {
-                    '@': {
-                        templateUrl: '/templates/Academics/courses/courseSearch.html',
-                        controller: 'academicCtrl as vm'
-                    }
-                }
-            })
-            .state('courses.addUpdate', {
-                url: '^/course/:action',
-                views: {
-                    '@': {
-                        templateUrl: '/templates/Academics/courses/courseAddUpdate.html',
-                        controller: 'academicCtrl as vm'
-                    }
-                },
-            })
              .state('employee', {
                  url: '/employee',
                  templateUrl: 'templates/employee/Index.html',
@@ -86,7 +68,9 @@
                 controller: 'employeeSettingsCntrl',
             }
         },
-    })  //users
+    })
+
+                //users
         .state('users', {
             controller: 'usersCntrl'
         }).state('users.add', {
@@ -106,7 +90,7 @@
                 }
             },
         }).state('users.Update', {
-            url: '^/userUpdate?id&action',
+            url: '^/user?id&action',
             views: {
                 '@': {
                     templateUrl: 'templates/users/userAddUpdate.html',
@@ -192,6 +176,66 @@
                 '@': {
                     templateUrl: 'templates/academics/attendance/attendanceSearch.html',
                     controller: 'attendanceCntrl',
+                }
+            },
+        })
+
+            //academics Settings
+             //.state('academicsSettings', {
+             //    controller: 'academicsSettCtrl'
+             //})
+                .state('batches', {
+                 url: '^/batches',
+                 views: {
+                     '@': {
+                         templateUrl: 'templates/Academics/academicSett/batch/batchSearch.html',
+                         controller: 'academicsSettCtrl',
+                     }
+                 },
+             }).state('batches.addUpdate', {
+                 url: '^/batch?id&action',
+                 views: {
+                     '@': {
+                         templateUrl: 'templates/Academics/academicSett/batch/batchAddUpdate.html',
+                         controller: 'academicsSettCtrl',
+                     }
+                 },
+             })
+        //.state('batches.update', {
+        //    url: '^/batch?id&action',
+        //    views: {
+        //        '@': {
+        //            templateUrl: 'templates/Academics/academicSett/batch/batchAddUpdate.html',
+        //            controller: 'academicsSettCtrl'
+        //        }
+        //    },
+        //})
+
+            //academics Settings
+             .state('courses', {
+                 url: '^/courses',
+                 views: {
+                     '@': {
+                         templateUrl: 'templates/Academics/academicSett/Courses/courseSearch.html',
+                         controller: 'coursesCtrl',
+                     }
+                 },
+             })
+                .state('courses.add', {
+                 url: '^/courses/:action',
+                 views: {
+                     '@': {
+                         templateUrl: 'templates/Academics/academicSett/Courses/courseAddUpdate.html',
+                         controller: 'coursesCtrl',
+                     }
+                 },
+             })
+        .state('courses.update', {
+            url: '^/courses?id&action',
+            views: {
+                '@': {
+                    templateUrl: 'templates/Academics/academicSett/Courses/courseAddUpdate.html',
+                    controller: 'coursesCtrl'
                 }
             },
         })

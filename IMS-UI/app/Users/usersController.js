@@ -6,9 +6,7 @@
             getAll();
             $scope.Users = [];
             //To Get All Records  
-
             function getAll() {
-
                 var getData = usersService.getAllRecords();
 
                 getData.then(function (prs) {
@@ -18,39 +16,6 @@
                 }, function () {
                     alert('Error in getting records');
                 });
-            }
-
-            $scope.AddUpdateDiv = function () {
-                ClearFields();
-                $scope.Action = "Add";
-                $scope.divAddUpdate = true;
-            }
-
-            $scope.cancel = function () {
-                //If DIV is visible it will be hidden and vice versa.
-                $scope.IsVisible = false;
-                $scope.divAddUpdate = false;
-                $scope.detailViewDiv = false;
-            }
-
-            function ClearFields() {
-                $scope.ID = "";
-                $scope.NAME = "";
-                $scope.ADDRESS = "";
-                $scope.PHONE_NO = "";
-                $scope.MOBILE_NO = "";
-                $scope.EMAIL = "";
-                $scope.DESIGNATION = "";
-                $scope.ACCESS_LEVEL = "";
-                $scope.PERMANENT_ADDRESS = "";
-                $scope.TEMP_ADDRESS = "";
-                $scope.DOB = "";
-                $scope.TEACHER_OR_NONTEACHER = "";
-                $scope.NATIONAL_ID_NO = "";
-                $scope.MARITAL_STATUS = "";
-                $scope.GENDER = "";
-                $scope.QUALIFICATION = "";
-                $scope.DEPTID = "";
             }
         })
 
@@ -72,7 +37,7 @@
 
         getData.then(function (prs) {
             $scope.profile = prs.data;
-            console.log($scope.profile.NAME);
+            console.log($scope.profile);
 
             $scope.ID = $scope.profile.UserID;
             $scope.NAME = $scope.profile.NAME;

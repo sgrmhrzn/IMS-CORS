@@ -3,7 +3,7 @@
     <div class="form-group">
         <input type="text" class="form-control col-md-3" ng-model="search" />
         <input type="button" class="btn btn-info" value="Search" ng-click="Search()" />
-        <input type="button" ui-sref="courses.addUpdate({action:'Add'})" class="btn btn-success" value="Add Course" />
+        <input type="button" ui-sref="courses.add({action:'Add'})" class="btn btn-success" value="Add Course" />
     </div>
 
     <div class="divList">
@@ -18,27 +18,31 @@
                 <td><b>Action</b></td>
 
             </tr>
-            <tr ng-repeat="std in Student | filter: {'NAME':search}">
+            <tr ng-repeat="course in Courses | filter: {'NAME':search}">
                 <td>
                     {{$index +1}}
                 </td>
                 <td>
-                    {{std.NAME}}
+                    {{course.CourseName}}
                 </td>
                 <td>
-                    {{std.CLASS}}
+                    {{course.CourseLevel}}
                 </td>
                 <td>
-                    {{std.PHONENO}}
+                    {{course.CourseInstructor1}}
                 </td>
                 <td>
-                    {{std.ENROLLEDYEAR |  date:'yyyy-MM-dd' }}
+                    {{course.CourseInstructor2 }}
                 </td>
                 <td>
-                    {{std.Category}}
+                    {{course.CourseInstructor3}}
                 </td>
                 <td>
-                    <a ui-sref="students.detailAsRoot({id:std.StdID})" class="btn btn-success" value="View"><i class="glyphicon glyphicon-user"> </i>View</a>
+                    {{course.ClassNo}}
+                </td>
+                <td>
+                    <a ui-sref="courses.update({id:course.CourseID, action:'Update'})" class="btn btn-warning" value="View"><i class="glyphicon glyphicon-edit"> </i></a>
+                    <a class="btn btn-danger" value="View" ng-click="delete(course);"><i class="glyphicon glyphicon-remove"> </i></a>
                 </td>
             </tr>
         </table>

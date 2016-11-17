@@ -11,17 +11,15 @@
 
             //get All Eployee
             this.getAllDept = function () {
-
                 return $http.get(appSettings.serverPath + "/api/empSettings/getDepartment");
             };
 
             //get All Eployee
             this.getAllRecords = function () {
-
                 return $http.get(appSettings.serverPath + "/api/studentsApi");
             };
 
-            // get Employee By Id
+            //get Employee By Id
             this.getRecordById = function (ID) {
                 var response = $http({
                     method: "GET",
@@ -33,7 +31,7 @@
                 return response;
             }
 
-            // Update Employee 
+            //Update Employee 
             this.updateRecord = function (emp) {
                 var response = $http({
                     method: "post",
@@ -44,7 +42,7 @@
                 return response;
             }
 
-            // Add Employee
+            //Add Employee
             this.AddRecord = function (record) {
                 debugger;
                 var response = $http({

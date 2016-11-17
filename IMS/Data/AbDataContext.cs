@@ -35,6 +35,10 @@ namespace IMS.Data
 
         public DbSet<StdAttendance> stdAttendance { get; set;}
 
+        public DbSet<BatchCreation> batches { get; set; }
+
+        public DbSet<Courses> courses { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

@@ -178,6 +178,6 @@ H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Security.Google.xml
 H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Security.Twitter.xml
 H:\Projects\IMS-master\IMS\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 H:\Projects\IMS-master\IMS\bin\System.Web.Http.Owin.xml
+H:\Projects\IMS-master\IMS\obj\Debug\IMS.csprojResolveAssemblyReference.cache
 H:\Projects\IMS-master\IMS\obj\Debug\IMS.dll
 H:\Projects\IMS-master\IMS\obj\Debug\IMS.pdb
-H:\Projects\IMS-master\IMS\obj\Debug\IMS.csprojResolveAssemblyReference.cache

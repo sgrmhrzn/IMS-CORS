@@ -13,7 +13,7 @@ namespace IMS.Core
 
         public string CourseName { get; set; }
 
-        public string CourseLevel { get; set; }
+        public int CourseLevel { get; set; }
 
         public string CourseInstructor1 { get; set; }
 
