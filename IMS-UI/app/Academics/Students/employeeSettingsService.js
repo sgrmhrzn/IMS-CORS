@@ -3,14 +3,14 @@
     //get All Eployee
     this.getAllDept = function () {
       
-        return $http.get("api/empSettings/getDepartment");
+        return $http.get("api/academics/getDepartment");
     };
 
     // get Employee By Id
     this.getDeptById = function (ID) {
         var response = $http({
             method: "GET",
-            url: "api/empSettings/getDepById",
+            url: "api/academics/getDepById",
             params: {
                 id: JSON.stringify(ID)
             }
@@ -22,7 +22,7 @@
     this.updateDepartment = function (dept) {
         var response = $http({
             method: "post",
-            url: "api/empSettings/updateDept/",
+            url: "api/academics/updateDept/",
             data: JSON.stringify(dept),
             dataType: "json"
         });
@@ -33,7 +33,7 @@
     this.AddDeptRecord = function (record) {
         var response = $http({
             method: "POST",
-            url: "api/empSettings/addDepartment",
+            url: "api/academics/addDepartment",
             data: JSON.stringify(record),
             dataType: "json"
         });
@@ -44,7 +44,7 @@
     this.deleteDeptRecord = function (person) {
         var response = $http({
             method: "POST",
-            url: "api/empSettings/deleteDept",
+            url: "api/academics/deleteDept",
             data: JSON.stringify(person),
             dataType: "json"
             //params: {

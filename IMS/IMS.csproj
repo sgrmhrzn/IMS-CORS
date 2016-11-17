@@ -253,10 +253,10 @@
     <Compile Include="Controllers\employeeApiController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
-    <Compile Include="Controllers\employeeSettingsApiController.cs" />
     <Compile Include="Core\BatchCreation.cs" />
     <Compile Include="Core\CLASS.cs" />
     <Compile Include="Core\EmpAttendance.cs" />
+    <Compile Include="Core\Std_Category.cs" />
     <Compile Include="Core\TeacherTimeTable.cs" />
     <Compile Include="Core\StdAttendance.cs" />
     <Compile Include="Core\Fees.cs" />

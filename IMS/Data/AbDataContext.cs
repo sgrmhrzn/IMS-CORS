@@ -39,6 +39,11 @@ namespace IMS.Data
 
         public DbSet<Courses> courses { get; set; }
 
+        public DbSet<CLASS> classes { get; set; }
+
+        public DbSet<Std_Category> stdCategroy { get; set; }
+
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

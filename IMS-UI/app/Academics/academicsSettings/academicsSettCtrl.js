@@ -4,6 +4,7 @@
         .module("myApp")
         .controller("academicsSettCtrl", function ($scope, academicsSettSev, $filter, $state, $stateParams) {
             getAllBatch();
+            //$scope.message = "This Field is required!";
 
             if ($stateParams.id != undefined) {
                 getByIdBatch();
@@ -44,7 +45,7 @@
 
             $scope.AddUpdate = function () {
                 //console.log($scope.DEPTNAME);
-                $scope.message = "This Field is required!";
+                
                 var batches = {
                     Section: $scope.Section,
                     Class: $scope.Class,
