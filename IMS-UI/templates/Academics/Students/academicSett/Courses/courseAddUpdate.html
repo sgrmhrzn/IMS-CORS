@@ -1,0 +1,78 @@
+﻿<div class="container">
+    <h1 class="modal-header">{{Action}} Course</h1>
+    <form class="form-horizontal" name="studentsForm">
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">ID</label>
+            <div class="col-sm-10">
+                <input class="form-control" disabled="disabled" type="text" ng-model="ID" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Course Name</label>
+            <div class="col-sm-10">
+                <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="CourseName" required />
+                <div ng-messages="studentsForm.name.$error" ng-if="studentsForm.name.$touched">
+                    <p ng-message="required">Name is required!</p>
+                </div>
+            </div>
+        </div>
+              
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Course Level</label>
+            <div class="col-sm-10">
+                <input name="marital" class="form-control col-md-3" type="text" ng-model="CourseLevel" required />
+                <div ng-messages="sudentsForm.marital.$error" ng-if="studentsForm.marital.$touched">
+                    <p ng-message="required">Marital Status is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Course Instructor 1</label>
+            <div class="col-sm-10">
+                <input name="nationalID" class="form-control col-md-3" type="text" ng-model="CourseInstructor1" required />
+                <div ng-messages="studentsForm.nationalID.$error" ng-if="studentsForm.nationalID.$touched">
+                    <p ng-message="required">National Id is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Course Instructor 2</label>
+            <div class="col-sm-10">
+                <input name="add" class="form-control col-md-3" type="text" ng-model="CourseInstructor2" required />
+                <div ng-messages="studentsForm.add.$error" ng-if="studentsForm.add.$touched">
+                    <p ng-message="required">Address Id is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Course Instructor 3</label>
+            <div class="col-sm-10">
+                <input name="phone" type="text" class="form-control col-md-3" ng-model="CourseInstructor3" required />
+                <div ng-messages="studentsForm.phone.$error" ng-if="studentsForm.phone.$touched">
+                    <p ng-message="required">Phone no is required!</p>
+                </div>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Class</label>
+            <div class="col-sm-10">
+                <input name="joinDate" class="form-control col-md-3" type="text" ng-model="ClassNo" required/>
+                <div ng-messages="studentsForm.joinDate.$error" ng-if="studentsForm.joinDate.$touched">
+                    <p ng-message="required">Join Date is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label"></label>
+            <div class="col-sm-10">
+                <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdate()" />
+            </div>
+        </div>
+    </form>
+
+</div>

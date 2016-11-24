@@ -1,0 +1,75 @@
+﻿<div class="container">
+    <h1 class="modal-header">{{Action}} Time Table</h1>
+    <form class="form-horizontal" name="timeTableForm">
+        
+        <div class="form-group">
+            <label class="col-sm-2 control-label">ID</label>
+            <div class="col-sm-10">
+                <input class="form-control" disabled="disabled" type="text" ng-model="ID" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Class Room Id</label>
+            <div class="col-sm-10">
+                <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="ClassRoom_ID" required />
+                <div ng-messages="studentsForm.name.$error" ng-if="studentsForm.name.$touched">
+                    <p ng-message="required">Name is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Day</label>
+            <div class="col-sm-10">
+                <select name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="DayOfTheWeek" required >
+                    <option value="">Select</option> 
+                    <option>Sunday</option> 
+                    <option>Monday</option> 
+                    <option>Tuesday</option> 
+                    <option>Wednesday</option> 
+                    <option>Thursday</option> 
+                    <option>Friday</option> 
+                    <option>Saturday</option> 
+                </select>
+                <div ng-messages="studentsForm.name.$error" ng-if="studentsForm.name.$touched">
+                    <p ng-message="required">Name is required!</p>
+                </div>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Start Time</label>
+            <div class="col-sm-10">
+                <input name="dob" type="text" class="form-control col-md-3" ng-model="StartTime" required />
+                <div ng-messages="studentsForm.dob.$error" ng-if="studentsForm.dob.$touched">
+                    <p ng-message="required">DOB is required!</p>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">End Time</label>
+            <div class="col-sm-10">
+                <input typeof="text" name="marital" class="form-control col-md-3" type="text" ng-model="EndTime" required />
+                <div ng-messages="studentsForm.marital.$error" ng-if="studentsForm.marital.$touched">
+                    <p ng-message="required">Marital Status is required!</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Lecture ID</label>
+            <div class="col-sm-10">
+                <input name="nationalID" class="form-control col-md-3" type="text" ng-model="Lecture_ID" required />
+                <div ng-messages="studentsForm.nationalID.$error" ng-if="studentsForm.nationalID.$touched">
+                    <p ng-message="required">National Id is required!</p>
+                </div>
+            </div>
+        </div>
+       
+        <div class="form-group">
+            <div class="col-sm-10">
+                <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdate()" />
+            </div>
+        </div>
+
+    </form>
+</div>

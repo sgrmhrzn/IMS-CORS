@@ -11,7 +11,8 @@
             isLoggedIn: false,
             username: "",
             token: "",
-            userType: ""
+            userType: "",
+            userID: "",
         }
 
         var removeProfile = function(){
@@ -19,16 +20,18 @@
                 isLoggedIn: false,
                 username: "",
                 token: "",
-                userType: ""
+                userType: "",
+                userID: "",
             }
         };
 
-        var setProfile = function (username, token, userType) {
+        var setProfile = function (username, token, userType, userID) {
              profile = {
                 username: username,
                 token: token,
                 isLoggedIn: true,
-                userType: userType
+                userType: userType,
+                userID: userID
             }
             $cookies.putObject('profileCookies', profile)
         };

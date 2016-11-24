@@ -101,9 +101,9 @@
 
             getData.then(function (prs) {
                 $scope.profile = prs.data;
-                //console.log($scope.profile);
+                console.log($scope.profile);
 
-                $scope.ID = $scope.profile.ID;
+                $scope.ID = $scope.profile.EmpID;
                 $scope.NAME = $scope.profile.NAME;
                 $scope.ADDRESS = $scope.profile.ADDRESS;
                 $scope.PHONE_NO = $scope.profile.PHONE_NO;
@@ -150,7 +150,7 @@
             //console.log(EMPLOYEE.base64);
             var getAction = $scope.Action;
             if (getAction == "Update") {
-                EMPLOYEE.ID = $scope.ID;
+                EMPLOYEE.EmpID = $scope.ID;
                 var getData = employeeService.updateRecord(EMPLOYEE);
                 getData.then(function (msg) {
                     alert(msg.data);
@@ -193,6 +193,72 @@
                     alert('Error in Deleting Record');
                 });
             }
+        }
+    })
+
+        .controller("employeeAttendanceCntrl", function ($scope, empAttendanceService, $filter, $state, $stateParams) {
+        getAll();
+        $scope.Action = "Add";
+        $scope.EmpAttend = [];
+        var EmpAttend;
+
+
+        $scope.getStudents = function () {
+            var getData = empAttendanceService.getStdNClass($scope.CLASS);
+            getData.then(function (prs) {
+                $scope.stdClass = prs.data;
+                //$scope.profile = $scope.Student[$stateParams.id];
+
+            }, function () {
+                alert('Error in getting students');
+            });
+        }
+        //To Get All Records  
+        function getAll() {
+            var getData = empAttendanceService.getAllAtt();
+
+            getData.then(function (prs) {
+                $scope.EmpAttend = prs.data;
+                //$scope.profile = $scope.Student[$stateParams.id];
+
+            }, function () {
+                alert('Error in getting records');
+            });
+        }
+
+        $scope.AddUpdate = function () {
+            debugger;
+            var dateNow = new Date();
+            var dateOfAttendance = $filter('date')(dateNow, "yyyy-MM-dd");
+            var time = $filter('date')(dateNow, "HH:mm:ss");
+
+            EmpAttend = {
+                EmpID: $scope.EmpID,
+                DateOfAttendance: dateOfAttendance,
+                time : time
+            }
+            //console.log(EMPLOYEE.base64);
+            var getAction = $scope.Action;
+            var getData = empAttendanceService.AddRecord(EmpAttend);
+            getData.then(function (msg) {
+                //console.log(personDetails);
+                alert(msg.data);
+            }, function () {
+                alert('Error in adding record');
+            });
+        }
+
+        $scope.AddUpdateDiv = function () {
+            ClearFields();
+            $scope.Action = "Add";
+            $scope.divAddUpdate = true;
+        }
+
+        $scope.cancel = function () {
+            //If DIV is visible it will be hidden and vice versa.
+            $scope.IsVisible = false;
+            $scope.divAddUpdate = false;
+            $scope.detailViewDiv = false;
         }
     })
 }());

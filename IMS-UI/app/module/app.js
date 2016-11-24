@@ -3,14 +3,31 @@
 (function () {
     var app = angular.module("myApp", ["common.services", "ngCookies", "ui.router", "ImageCropper", "ngMessages"])
         .config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
-            $urlRouterProvider.otherwise('/');
+            $urlRouterProvider.otherwise('/dashboard');
 
             $stateProvider
                 .state('home', {
-                    url: '/',
-                    templateUrl: 'index.html',
-                    controller: 'homeCtrl as vm'
+                    url: '/dashboard',
+                    views: {
+                        '@': {
+                            templateUrl: 'templates/dashBoard.html',
+                            controller: 'homeCtrl as vm'
+                        }
+                    }
                 })
+
+                //main layout
+                .state('home.layout', {
+                    url: '^/',
+                    views: {
+                        '@': {
+                            templateUrl: 'index.html',
+                            controller: 'homeCtrl as vm'
+                        }
+                    }
+                })
+
+
                 .state('account', {
                     url: '/account',
                 })
@@ -68,7 +85,51 @@
                 controller: 'employeeSettingsCntrl',
             }
         },
+    }).state('employee.attendance', {
+        url: '^/attendance',
+        views: {
+            '@': {
+                templateUrl: 'templates/employee/attendance/empAttendance.html',
+                controller: 'employeeAttendanceCntrl',
+            }
+        },
     })
+   .state('employee.timeTable', {
+       url: '^/timeTable',
+       views: {
+           '@': {
+               templateUrl: 'templates/employee/teachers/timeTableSearch.html',
+               controller: 'teachersTimeTableCtrl',
+           }
+       },
+   })
+                .state('employee.timeTable.addUpdate', {
+                    url: '^/timeTable?id&action',
+                    views: {
+                        '@': {
+                            templateUrl: 'templates/employee/teachers/timeTableAddUpdate.html',
+                            controller: 'teachersTimeTableCtrl',
+                        }
+                    },
+                })
+                .state('employee.lecture', {
+                    url: '^/lectures',
+                    views: {
+                        '@': {
+                            templateUrl: 'templates/employee/teachers/lectureSearch.html',
+                            controller: 'lectureCtrl',
+                        }
+                    },
+                })
+                .state('employee.lecture.addUpdate', {
+                    url: '^/lectures?id&action',
+                    views: {
+                        '@': {
+                            templateUrl: 'templates/employee/teachers/lectureAddUpdate.html',
+                            controller: 'lectureCtrl',
+                        }
+                    },
+                })
 
                 //users
         .state('users', {
@@ -135,6 +196,16 @@
                 }
             },
         })
+                //Attendence
+        .state('students.attendance', {
+            url: '^/attendance/:action',
+            views: {
+                '@': {
+                    templateUrl: 'templates/academics/attendance/attendanceSearch.html',
+                    controller: 'attendanceCntrl',
+                }
+            },
+        })
 
 
         //finance
@@ -167,18 +238,7 @@
             },
         })
 
-    //Attendence
-        .state('attendance', {
-            controller: 'attendanceCntrl'
-        }).state('attendance.add', {
-            url: '^/attendance/:action',
-            views: {
-                '@': {
-                    templateUrl: 'templates/academics/attendance/attendanceSearch.html',
-                    controller: 'attendanceCntrl',
-                }
-            },
-        })
+    
 
             //academics Settings
              //.state('academicsSettings', {
@@ -198,6 +258,14 @@
                      '@': {
                          templateUrl: 'templates/Academics/academicSett/batch/batchAddUpdate.html',
                          controller: 'academicsSettCtrl',
+                     }
+                 },
+             }).state('category', {
+                 url: '^/category',
+                 views: {
+                     '@': {
+                         templateUrl: 'templates/Academics/academicSett/Category/Category.html',
+                         controller: 'categoryCtrl',
                      }
                  },
              })
@@ -235,16 +303,41 @@
             views: {
                 '@': {
                     templateUrl: 'templates/Academics/academicSett/Courses/courseAddUpdate.html',
-                    controller: 'coursesCtrl'
+                    controller: 'coursesCtrl',
                 }
             },
         })
-        }]).filter('splitNumber', function () {
+
+            //current user
+                  .state('currentUser', {
+                      url: '^/currentUser',
+                      views: {
+                          '@': {
+                              templateUrl: 'templates/account/currentProfile.html',
+                              controller: 'homeCtrl as vm'
+                          }
+                      },
+                  })
+        .state('currentUser.Update', {
+            url: '^/currentUser/:action',
+            views: {
+                '@': {
+                    templateUrl: 'templates/account/currentUserUpdate.html',
+                    controller: 'homeCtrl as vm'
+                }
+            },
+        })
+        }])
+
+        .filter('splitNumber', function () {
             return function (string) {
                 var matches = string.match(/\d+|[a-z]+/ig);
                 return matches[1];
             };
-        }).filter('splitString', function () {
+        })
+
+
+        .filter('splitString', function () {
             return function (string) {
                 var matches = string.match(/\d+|[a-z]+/ig);
                 return matches[0];

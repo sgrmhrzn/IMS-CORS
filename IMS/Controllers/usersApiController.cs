@@ -68,11 +68,37 @@ namespace IMS.Controllers
         [HttpPost]
         public string Delete(EMPLOYEE emp)
         {
-            int no = Convert.ToInt32(emp.ID);
+            int no = Convert.ToInt32(emp.EmpID);
             var record = db.userAccounts.Include("contact_detail").Where(x => x.UserID == no).FirstOrDefault();
             db.userAccounts.Remove(record);
             db.SaveChanges();
             return "Deleted";
+        }
+
+        [Route("api/usersApi/updateByMasterID")]
+        [System.Web.Http.AcceptVerbs("GET", "POST")]
+        [HttpPost, HttpGet]
+        public string updateByMasterID(Users user)
+        {
+            if (user != null)
+            {
+                string no = user.MasterID;
+                var getRecord = db.userAccounts.Where(x => x.MasterID == no).FirstOrDefault();
+                getRecord.UserName = user.UserName;
+                getRecord.NAME = user.NAME;
+
+                if (user.UserPassword != null)
+                {
+                    getRecord.UserPassword = user.UserPassword;
+                }
+
+                db.SaveChanges();
+                return "Updated!";
+            }
+            else
+            {
+                return "Some error occured while updating the record!";
+            }
         }
     }
 }

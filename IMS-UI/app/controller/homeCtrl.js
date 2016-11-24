@@ -3,14 +3,15 @@
 
     angular
     .module("myApp")
-    .controller("homeCtrl", ["userAccount","currentUser","$cookies","$state","$location","$stateParams",
+    .controller("homeCtrl", ["userAccount","currentUser","$cookies","$state","$location","$stateParams","usersService",
                                        homeCtrl]);
 
-    function homeCtrl(userAccount, currentUser, $cookies, $state, $stateParams, $location) {
+    function homeCtrl(userAccount, currentUser, $cookies, $state, $stateParams, $location, usersService) {
         var vm = this;
-        vm.currentUserName = currentUser.getProfile().username;
-        vm.userType = currentUser.getProfile().userType;
-        //console.log(currentUser.getProfile());
+        getRecordById();
+        var Users = [];
+
+
         if (currentUser.getProfile().token == '') {
             $state.go('login');
         }
@@ -34,6 +35,29 @@
             confirmPassword: ''
         };
 
+        function getRecordById() {
+            vm.ID = currentUser.getProfile().userType + currentUser.getProfile().userID;
+            vm.NAME = currentUser.getProfile().username;
+            vm.currentUserName = currentUser.getProfile().username;
+            vm.userType = currentUser.getProfile().userType;
+        }
+
+        vm.AddUpdate = function () {
+            Users = {
+                NAME: vm.NAME,
+                UserName: vm.currentUserName,
+                UserPassword: vm.UserPassword,
+            }
+
+            Users.MasterID = vm.ID;
+            var getData = usersService.updateByMasterID(Users);
+            getData.then(function (msg) {
+                alert(msg.data);
+                vm.logout();
+            }, function () {
+                alert('Error in updating record');
+            });
+        }
         //vm.registerUser = function () {
         //    vm.userData.confirmPassword = vm.userData.password;
 

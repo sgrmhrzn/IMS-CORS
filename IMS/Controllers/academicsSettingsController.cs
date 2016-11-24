@@ -137,7 +137,7 @@ namespace IMS.Controllers
             }
         }
 
-        [Route("delteCategory")]
+        [Route("deleteCategory")]
         [HttpPost]
         public string Delete(Std_Category category)
         {
@@ -359,7 +359,7 @@ namespace IMS.Controllers
 
         [Route("deleteClass")]
         [HttpPost]
-        public string delteClass(CLASS clas)
+        public string deleteClass(CLASS clas)
         {
             int no = Convert.ToInt32(clas.CLASSNO);
             var record = db.classes.Where(x => x.CLASSNO == no).FirstOrDefault();
@@ -374,5 +374,83 @@ namespace IMS.Controllers
         * 
         * 
         * **/
+        #region Start lecture
+
+        [Route("getLecture")]
+        [HttpGet]
+        public IEnumerable<Lecture> getLecture()
+        {
+            return db.lectures.Include("course").AsEnumerable();
+        }
+
+        [Route("getLecture/{id}")]
+        [HttpGet]
+        public Lecture getLectureById(string id)
+        {
+            int no = Convert.ToInt32(id);
+            var byId = db.lectures.Find(no);
+            return byId;
+        }
+
+        [Route("addLecture")]
+        [HttpPost][HttpGet]
+        public string addLecture(Lecture lec)
+        {
+            if (lec != null)
+            {
+                db.lectures.Add(lec);
+                db.SaveChanges();
+                return "Class Added!";
+            }
+            else
+            {
+                return "Invalid!";
+            }
+        }
+
+        [Route("updateLecture")]
+        [HttpPost][HttpGet]
+        public string updateLecture(Lecture lec)
+        {
+            if (lec != null)
+            {
+                var byId = db.lectures.Where(x => x.Lecture_ID == lec.Lecture_ID).FirstOrDefault();
+                byId.CourseID = lec.CourseID;
+                byId.TeacherID = lec.TeacherID;
+
+                db.SaveChanges();
+                return "Lecture Updated!";
+            }
+            else
+            {
+                return "Invalid Lecture!";
+            }
+        }
+
+        [Route("deleteLecture")]
+        [HttpPost]
+        public string deleteLecture(Lecture lec)
+        {
+            int no = Convert.ToInt32(lec.Lecture_ID);
+            var record = db.lectures.Where(x => x.Lecture_ID == no).FirstOrDefault();
+            db.lectures.Remove(record);
+            db.SaveChanges();
+            return "Deleted";
+        }
+        #endregion class
+
+        /***
+        * 
+        * 
+        * 
+        * **/
+        #region start select teachers
+        [Route("getTeachers")]
+        [HttpGet]
+        public IEnumerable<EMPLOYEE> getTeachers()
+        {
+            return db.employee.Where(e => e.TEACHER_OR_NONTEACHER == "T").AsEnumerable();
+        }
+        #endregion
     }
 }

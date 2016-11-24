@@ -13,19 +13,14 @@ namespace IMS.Core
         [Key]
         public int ID { get; set; }
 
-        [Required]
         public int ClassRoom_ID { get; set; }
 
-        [Required(ErrorMessage = "Invalid No" )]
         public string DayOfTheWeek { get; set; }
 
-        [Required(ErrorMessage = "Invalid No")]
         public TimeSpan StartTime { get; set; }
 
-        [Required(ErrorMessage = "Invalid No")]
         public TimeSpan EndTime { get; set; }
 
-        [Required(ErrorMessage = "Invalid No")]
         public int Lecture_ID { get; set; }
 
     }

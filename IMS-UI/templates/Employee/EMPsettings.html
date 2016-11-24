@@ -1,6 +1,6 @@
 ﻿<section class="container">
     <h2 class="modal-header">Employee Settings</h2>
-    <div class="col-md-4">
+    <div class="col-md-4" ng-controller="employeeSettingsCntrl">
        
          <div class="divList">
             <a type="button" class="btn btn-success pull-right" value="Add Department" ng-click="AddUpdateDiv()"><i class="glyphicon glyphicon-plus"></i></a>
@@ -52,9 +52,9 @@
     </div>
 
 
-    <div class="col-md-4">
+    <div class="col-md-4" ng-controller="categoryCtrl">
         <div class="divList">
-            <a type="button" class="btn btn-success pull-right" value="Add Department" ng-click="AddUpdateDiv()"><i class="glyphicon glyphicon-plus"></i></a>
+            <a type="button" class="btn btn-success pull-right" value="Add Category" ng-click="AddUpdateDiv()"><i class="glyphicon glyphicon-plus"></i></a>
             <h3>Category</h3>
             <table class="table table-bordered table-hover">
                 <tr>
@@ -62,21 +62,21 @@
                     <td><b>Department Name</b></td>
                     <td class="col-md-4"><b>Action</b></td>
                 </tr>
-                <tr ng-repeat="dept in DEPARTMENT | filter: search">
+                <tr ng-repeat="cat in Category">
                     <td>
                         {{$index +1}}
                     </td>
                     <td>
-                        {{dept.DEPTNAME}}
+                        {{cat.Category}}
                     </td>
                     <td>
-                        <a type="button" class="btn btn-primary" value="Edit" ng-click="editDept(dept)"><i class="glyphicon glyphicon-edit"></i></a>
-                        <a type="button" class="btn btn-danger" value="Del" ng-click="deleteDept(dept)"><i class="glyphicon glyphicon-remove"></i></a>
+                        <a type="button" class="btn btn-primary" value="Edit" ng-click="edit(cat)"><i class="glyphicon glyphicon-edit"></i></a>
+                        <a type="button" class="btn btn-danger" value="Del" ng-click="delete(cat)"><i class="glyphicon glyphicon-remove"></i></a>
                     </td>
                 </tr>
             </table>
         </div>
-        <div ng-show="categoryDiv" class="addUpdateDiv container">
+        <div ng-show="divAddUpdate" class="addUpdateDiv container">
             <h1 class="modal-header">{{Action}} Department</h1>
             <form class="form-horizontal" name="deptForm">
                 <div class="form-group">
@@ -86,14 +86,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Department Name</label>
+                    <label class="col-sm-2 control-label">Category</label>
                     <div class="col-sm-10">
-                        <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="DEPTNAME" required />
+                        <input name="name" ng-true-value="" class="form-control col-md-3" type="text" ng-model="Category" required />
                         <div ng-messages="deptForm.name.$error" ng-if="deptForm.name.$touched">
                             <p ng-message="required">Department Name is required!</p>
                         </div>
                         <div>
-                            <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdateDept()" />
+                            <input type="button" class="btn btn-success" value="Save" ng-click="AddUpdate()" />
                             <input type="button" class="btn btn-primary" value="Cancel" ng-click="cancel()" />
                         </div>
                     </div>

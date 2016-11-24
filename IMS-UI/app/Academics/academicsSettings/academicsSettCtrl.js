@@ -4,7 +4,7 @@
         .module("myApp")
         .controller("academicsSettCtrl", function ($scope, academicsSettSev, $filter, $state, $stateParams) {
             getAllBatch();
-            //$scope.message = "This Field is required!";
+            $scope.message = "This Field is required!";
 
             if ($stateParams.id != undefined) {
                 getByIdBatch();
@@ -190,6 +190,103 @@
                             alert('Error in Deleting Record');
                         });
                     }
+                }
+            })
+    //controller for courses
+            .controller("categoryCtrl", function ($scope, categoryService, $filter, $state, $stateParams) {
+
+                $scope.divAddUpdate = false;
+
+                getAll();
+                $scope.Categories = [];
+                var Category;
+
+                //To Get All Records  
+                function getAll() {
+                    var getData = categoryService.getAllRecords();
+                    getData.then(function (crs) {
+                        $scope.Categories = crs.data;
+                    }, function () {
+                        alert('Error in getting records');
+                    });
+                }
+
+                //Single Object fetch
+                $scope.edit = function (cat) {
+                    $scope.Action = "Update";
+                    $scope.divAddUpdate = true;
+
+                    //console.log($stateParams.id);
+                    var getData = categoryService.getRecordById(cat.ID);
+
+                    getData.then(function (crs) {
+                        $scope.Category = crs.data;
+                        //console.log(course.CourseName);
+
+                        $scope.ID = cat.ID;
+                        $scope.category = cat.Category;
+                    }, function () {
+                        alert('Error in getting records');
+                    });
+                }
+
+                $scope.AddUpdate = function () {
+                    Category = {
+                        Category: $scope.category
+                    }
+
+                    var getAction = $scope.Action;
+                    if (getAction == "Update") {
+                        Category.ID = $scope.ID;
+                        var getData = categoryService.updateRecord(Category);
+                        getData.then(function (msg) {
+                            alert(msg.data);
+                            $scope.divAddUpdate = false;
+                        }, function () {
+                            alert('Error in updating record');
+                        });
+                    }
+                    else {
+                        var getData = categoryService.AddRecord(Category);
+                        getData.then(function (msg) {
+                            //console.log(personDetails);
+                            alert(msg.data);
+                            $scope.divAddUpdate = false;
+                        }, function () {
+                            alert('Error in adding record');
+                        });
+                    }
+                    //$state.go("users.search");
+                }
+
+                $scope.delete = function (cat) {
+                    debugger;
+                    var result = confirm("Do you really want to delete " + cat.Category + "?");
+                    if (result) {
+                        var getData = categoryService.deleteRecord(cat);
+                        getData.then(function (msg) {
+                            //alert(msg.data);
+                        }, function () {
+                            alert('Error in Deleting Record');
+                        });
+                    }
+                }
+                $scope.AddUpdateDiv = function () {
+                    ClearFields();
+                    $scope.Action = "Add";
+                    $scope.divAddUpdate = true;
+                }
+
+                function ClearFields ()
+                {
+                    $scope.ID = "";
+                    $scope.Category = "";
+                }
+
+                $scope.cancel = function () {
+                    //If DIV is visible it will be hidden and vice versa.
+                    $scope.IsVisible = false;
+                    $scope.divAddUpdate = false;
                 }
             })
 }());

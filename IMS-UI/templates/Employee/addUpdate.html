@@ -116,7 +116,15 @@
         <div class="form-group">
             <label class="col-sm-2 control-label">Qualification</label>
             <div class="col-sm-10">
-                <input name="qualification" class="form-control col-md-3" type="text" ng-model="QUALIFICATION" required />
+                <select name="qualification" class="form-control col-md-3" type="text" ng-model="QUALIFICATION" required>
+                    <option value="">--Select--</option>
+                    <option >SLC</option>
+                    <option>High School</option>
+                    <option>Bachelor</option>
+                    <option>Master</option>
+                    <option>PhD</option>
+                    <option>Others</option>
+                </select>
                 <div ng-messages="employeeForm.qualification.$error" ng-if="employeeForm.qualification.$touched">
                     <p ng-message="required">Qualification is required!</p>
                 </div>

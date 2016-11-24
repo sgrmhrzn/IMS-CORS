@@ -119,7 +119,7 @@ namespace IMS.Controllers
         public IEnumerable<StdAttendance> getAttendance()
         {
             //return new string[] { "value1", "value2" };
-            return db.stdAttendance.AsEnumerable();
+            return db.stdAttendance.Include("students").Include("studentDetails").AsEnumerable();
         }
 
         [Route("api/academic/attendance/add")]

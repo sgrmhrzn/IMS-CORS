@@ -1,0 +1,50 @@
+﻿<section>
+    <h2 class="modal-header">Teachers Time Table</h2>
+    <div class="form-group">
+        <input type="text" class="form-control col-md-3" ng-model="search" />
+        <input type="button" class="btn btn-info" value="Search" ng-click="Search()" />
+        <div class="btn btn-primary" ui-sref="employee.timeTable.addUpdate({action: 'Add'})">Add Time Table</div>
+        <div class="btn btn-primary" ui-sref="employee.lecture">Manage Lectures</div>
+    </div>
+
+    <div class="divList">
+        <table class="table table-hover">
+            <tr>
+                <td><b>#</b></td>
+                <td><b>Class Room</b></td>
+                <td><b>Day</b></td>
+                <td><b>Start Time</b></td>
+                <td><b>End Time</b></td>
+                <td><b>Lecture</b></td>
+                <td><b>Action</b></td>
+
+            </tr>
+            <tr ng-repeat="TT in timeTables | filter: {'NAME':search}">
+                <td>
+                    {{$index +1}}
+                </td>
+                <td>
+                    {{TT.ClassRoom_ID}}
+                </td>
+                <td>
+                    {{TT.DayOfTheWeek}}
+                </td>
+                <td>
+                    {{TT.StartTime}}
+                </td>
+                <td>
+                    {{TT.EndTime}}
+                </td>
+                <td>
+                    {{TT.Lecture_ID}}
+                </td>
+                <td>
+                    <a ui-sref="employee.timeTable.addUpdate({action:'Update', id :{{TT.ID}} })" class="btn btn-success"><i class="glyphicon glyphicon-edit"> </i></a>
+                    <a class="btn btn-success" value="remove"><i class="glyphicon glyphicon-remove"> </i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</section>

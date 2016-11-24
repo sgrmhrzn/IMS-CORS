@@ -1,0 +1,52 @@
+﻿<section>
+    <h2 class="modal-header">Courses</h2>
+    <div class="form-group">
+        <input type="text" class="form-control col-md-3" ng-model="search" />
+        <input type="button" class="btn btn-info" value="Search" ng-click="Search()" />
+        <input type="button" ui-sref="courses.add({action:'Add'})" class="btn btn-success" value="Add Course" />
+    </div>
+
+    <div class="divList">
+        <table class="table table-hover">
+            <tr>
+                <td><b>#</b></td>
+                <td><b>Name</b></td>
+                <td><b>Class</b></td>
+                <td><b>Phone No</b></td>
+                <td><b>Enrolled Date</b></td>
+                <td><b>Category</b></td>
+                <td><b>Action</b></td>
+
+            </tr>
+            <tr ng-repeat="course in Courses | filter: {'NAME':search}">
+                <td>
+                    {{$index +1}}
+                </td>
+                <td>
+                    {{course.CourseName}}
+                </td>
+                <td>
+                    {{course.CourseLevel}}
+                </td>
+                <td>
+                    {{course.CourseInstructor1}}
+                </td>
+                <td>
+                    {{course.CourseInstructor2 }}
+                </td>
+                <td>
+                    {{course.CourseInstructor3}}
+                </td>
+                <td>
+                    {{course.ClassNo}}
+                </td>
+                <td>
+                    <a ui-sref="courses.update({id:course.CourseID, action:'Update'})" class="btn btn-warning" value="View"><i class="glyphicon glyphicon-edit"> </i></a>
+                    <a class="btn btn-danger" value="View" ng-click="delete(course);"><i class="glyphicon glyphicon-remove"> </i></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+</section>

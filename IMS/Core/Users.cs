@@ -13,22 +13,16 @@ namespace IMS.Core
         [Key]
         public int UserID { get; set; }
 
-        [Required]
         public string NAME { get; set; }
 
-        [Required]
         public string UserName { get; set; }
 
-        [Required]
         public int AccessRole { get; set; }
 
-        [Required]
         public string UserPassword { get; set; }
 
-        [Required]
         public int Status { get; set; }
 
-        [Required]
         public string MasterID { get; set; }
     }
 }

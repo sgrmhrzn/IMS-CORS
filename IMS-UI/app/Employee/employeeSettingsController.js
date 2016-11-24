@@ -85,7 +85,7 @@
 
 
             $scope.AddUpdateDiv = function () {
-                ClearFields();
+                //ClearFields();
                 $scope.Action = "Add";
                 $scope.divAddUpdate = true;
             }
@@ -109,26 +109,6 @@
                         alert('Error in Deleting Record');
                     });
                 }
-            }
-
-            function ClearFields() {
-                $scope.ID = "";
-                $scope.NAME = "";
-                $scope.ADDRESS = "";
-                $scope.PHONE_NO = "";
-                $scope.MOBILE_NO = "";
-                $scope.EMAIL = "";
-                $scope.DESIGNATION = "";
-                $scope.ACCESS_LEVEL = "";
-                $scope.PERMANENT_ADDRESS = "";
-                $scope.TEMP_ADDRESS = "";
-                $scope.DOB = "";
-                $scope.TEACHER_OR_NONTEACHER = "";
-                $scope.NATIONAL_ID_NO = "";
-                $scope.MARITAL_STATUS = "";
-                $scope.GENDER = "";
-                $scope.QUALIFICATION = "";
-                $scope.DEPTID = "";
             }
         })
 }());

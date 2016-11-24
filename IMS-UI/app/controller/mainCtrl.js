@@ -3,10 +3,10 @@
 
     angular
     .module("myApp")
-    .controller("MainCtrl", ["userAccount","currentUser","$cookies","$state","$location","$stateParams",
+    .controller("MainCtrl", ["userAccount","currentUser","$cookies","$state","$location","$stateParams","$filter","$window","usersService",
                                        MainCtrl]);
 
-    function MainCtrl(userAccount, currentUser, $cookies, $state, $stateParams, $location) {
+    function MainCtrl(userAccount, currentUser, $cookies, $state, $stateParams, $location, $filter, $window, usersService) {
         var vm = this;
         vm.loading = false;
 
@@ -20,8 +20,9 @@
 
         vm.logout = function () {
             $cookies.remove("profileCookies");
-            return currentUser.removeProfile();
             $state.go('login');
+            return currentUser.removeProfile();
+
         };
 
         vm.message = '';
@@ -57,17 +58,25 @@
                 });
         }
 
+
         vm.login = function () {
             vm.loading = true;
             vm.userData.grant_type = "password";
             vm.userData.userName = vm.userData.email;
 
+            String.prototype.padLeft = function padLeft(length, leadingChar) {
+                if (leadingChar === undefined) leadingChar = "0";
+                return this.length < length ? (leadingChar + this).padLeft(length, leadingChar) : this;
+            };
+
             userAccount.login.loginUser(vm.userData,
                 function (data) {
                     vm.message = "";
                     vm.password = "";
-                    currentUser.setProfile(vm.userData.userName, data.access_token, vm.userData.userType);
+                    currentUser.setProfile(vm.userData.userName, data.access_token, $filter('splitString')(data.MasterID), $filter('splitNumber')(data.MasterID));
                     //console.log($cookies.getObject('profileCookies'));
+                    
+                    $window.location.reload();
                     $state.go('home');
                     vm.loading = false;
                 },
@@ -82,8 +91,5 @@
                     }
                 });
         }
-
-        
-
     }
 })();

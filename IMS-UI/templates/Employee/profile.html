@@ -17,13 +17,13 @@
                 </div>
                 <div class="panel-body">
                     <div class="row">
-                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" ng-src="{{serverPath}}/Handler/employeImageHandler.ashx?id={{profile.ID}}" class="img-circle img-responsive"> </div>
+                        <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" ng-src="{{serverPath}}/Handler/employeImageHandler.ashx?id={{profile.EmpID}}" class="img-circle img-responsive"> </div>
                         <div class="col-md-9 col-lg-9 ">
                             <table class="table table-user-information">
                                 <tbody>
                                     <tr>
                                         <td><b>Employee ID</b></td>
-                                        <td>{{profile.ID}}</td>
+                                        <td>{{profile.EmpID}}</td>
                                     </tr>
                                     <tr>
                                         <td><b>Gender</b></td>
@@ -92,7 +92,7 @@
                 <div class="panel-footer">
                     <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                     <span class="pull-right">
-                        <a data-original-title="Edit this user" ui-sref="employee.Update({id:profile.ID, action:'Update'})" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editRecord(profile)"><i class="glyphicon glyphicon-edit" ></i></a>
+                        <a data-original-title="Edit this user" ui-sref="employee.Update({id:profile.EmpID, action:'Update'})" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning" ng-click="editRecord(profile)"><i class="glyphicon glyphicon-edit" ></i></a>
                         <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger" ng-click="delete(profile)"><i class="glyphicon glyphicon-remove"></i></a>
                     </span>
                 </div>

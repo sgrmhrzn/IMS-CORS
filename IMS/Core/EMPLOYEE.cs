@@ -11,7 +11,7 @@ namespace IMS.Core
     public class EMPLOYEE
     {
         [Key]
-        public int ID { get; set; }
+        public int EmpID { get; set; }
 
         [Required]
         public string NAME { get; set; }

@@ -71,8 +71,8 @@ namespace IMS.Controllers
         [HttpPost]
         public string Delete(EMPLOYEE emp)
         {
-            int no = Convert.ToInt32(emp.ID);
-            var record = db.employee.Include("contact_detail").Where(x => x.ID == no).FirstOrDefault();
+            int no = Convert.ToInt32(emp.EmpID);
+            var record = db.employee.Include("contact_detail").Where(x => x.EmpID == no).FirstOrDefault();
             db.employee.Remove(record);
             db.SaveChanges();
             return "Deleted";

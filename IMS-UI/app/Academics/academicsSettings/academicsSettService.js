@@ -4,7 +4,6 @@
     angular
     .module("common.services")
         .service("academicsSettSev", function ($http, appSettings, currentUser) {
-
             //get All Eployee
             this.getAllBatch = function () {
                 return $http.get(appSettings.serverPath + "/api/academics/getBatch");
@@ -108,6 +107,63 @@
             var response = $http({
                 method: "POST",
                 url: appSettings.serverPath + "/api/academics/deleteCourse",
+                data: JSON.stringify(record),
+                dataType: "json"
+                //params: {
+                //    employeeId: JSON.stringify(employeeId)
+                // }
+            });
+            return response;
+        }
+    })
+         //service for course
+    .service("categoryService", function ($http, appSettings, currentUser) {
+
+        //get All Eployee
+        this.getAllRecords = function () {
+            return $http.get(appSettings.serverPath + "/api/academics/getCategory");
+        };
+
+        // get Employee By Id
+        this.getRecordById = function (ID) {
+            var response = $http({
+                method: "GET",
+                url: appSettings.serverPath + "/api/academics/getCategory/" + ID,
+                params: {
+                    id: ID
+                }
+            });
+            return response;
+        }
+
+        // Update Employee 
+        this.updateRecord = function (record) {
+            var response = $http({
+                method: "post",
+                url: appSettings.serverPath + "/api/academics/updateCategory",
+                data: JSON.stringify(record),
+                dataType: "json"
+            });
+            return response;
+        }
+
+        // Add Employee
+        this.AddRecord = function (record) {
+            debugger;
+            var response = $http({
+                method: "POST",
+                url: appSettings.serverPath + "/api/academics/addCategory",
+                data: JSON.stringify(record),
+                dataType: "json"
+            });
+            return response;
+        }
+
+        //Delete Employee
+        this.deleteRecord = function (record) {
+            var response = $http({
+                method: "POST",
+                url: appSettings.serverPath + "/api/academics/deleteCategory",
                 data: JSON.stringify(record),
                 dataType: "json"
                 //params: {

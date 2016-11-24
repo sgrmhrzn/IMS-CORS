@@ -5,7 +5,6 @@
     .module("common.services")
         .service("usersService", function ($http, appSettings, currentUser) {
 
-
         //get All Eployee
         this.getAllRecords = function () {
 
@@ -28,7 +27,7 @@
         this.updateRecord = function (emp) {
             var response = $http({
                 method: "post",
-                url: appSettings.serverPath + "api/usersApi/update/" + emp.ID,
+                url: appSettings.serverPath + "/api/usersApi/update/" + emp.ID,
                 data: JSON.stringify(emp),
                 dataType: "json"
             });
@@ -40,7 +39,7 @@
             debugger;
             var response = $http({
                 method: "POST",
-                url: appSettings.serverPath + "api/usersApi/add",
+                url: appSettings.serverPath + "/api/usersApi/add",
                 data: JSON.stringify(record),
                 dataType: "json"
             });
@@ -51,12 +50,23 @@
         this.deleteRecord = function (person) {
             var response = $http({
                 method: "POST",
-                url: appSettings.serverPath + "api/usersApi/delete/" + person.person_id,
+                url: appSettings.serverPath + "/api/usersApi/delete/" + person.person_id,
                 data: JSON.stringify(person),
                 dataType: "json"
                 //params: {
                 //    employeeId: JSON.stringify(employeeId)
                 // }
+            });
+            return response;
+        }
+
+        //update by master ID to by users
+        this.updateByMasterID = function (user) {
+            var response = $http({
+                method: "POST",
+                url: appSettings.serverPath + "/api/usersApi/updateByMasterID",
+                data: JSON.stringify(user),
+                dataType: "json"
             });
             return response;
         }

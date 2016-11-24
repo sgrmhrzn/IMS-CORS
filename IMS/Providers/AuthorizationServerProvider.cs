@@ -48,13 +48,14 @@ namespace WebAPI
                 {
                     { 
                         "userName", context.UserName
-                    }
+                    },
+                    { "MasterID", string.Join(",", db.userAccounts.Where(x => x.UserName == user && x.UserPassword == password).Select(x=> x.MasterID)) }
                 });
 
                 var ticket = new AuthenticationTicket(identity, props);
                 context.Validated(ticket);
             }
-            else
+            else if(checkUser != 1)
             {
                 context.SetError("invalid_grant", "The user name or password is incorrect.");
                 return;

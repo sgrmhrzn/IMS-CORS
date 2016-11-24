@@ -18,7 +18,7 @@ namespace IMS.Handler
         public void ProcessRequest(HttpContext context)
         {
             int ImageId = Convert.ToInt32(context.Request.QueryString["id"]);
-            String strdata = "select Photo from EMPLOYEE where ID =@ID";
+            String strdata = "select Photo from EMPLOYEE where EmpID =@ID";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {

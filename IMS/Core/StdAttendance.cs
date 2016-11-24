@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -19,8 +20,10 @@ namespace IMS.Core
 
         public string STATUS { get; set; }
 
-        //public Student students { get; set; }
+        [ForeignKey("StdID")]
+        public Student students { get; set; }
 
-        //public ICollection<STUDENT_DETAILS> studentDetails { get; set; }
+        [ForeignKey("StdID")]
+        public STUDENT_DETAILS studentDetails { get; set; }
     }
 }

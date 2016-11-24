@@ -7,14 +7,14 @@
             //get All Eployee
             this.getAllDept = function () {
 
-                return $http.get(appSettings.serverPath + "/api/empSettings/getDepartment");
+                return $http.get(appSettings.serverPath + "/api/academics/getDepartment");
             };
 
             // get Employee By Id
             this.getDeptById = function (ID) {
                 var response = $http({
                     method: "GET",
-                    url: appSettings.serverPath + "/api/empSettings/getDepById",
+                    url: appSettings.serverPath + "/api/academics/getDepById",
                     params: {
                         id: JSON.stringify(ID)
                     }
@@ -26,7 +26,7 @@
             this.updateDepartment = function (dept) {
                 var response = $http({
                     method: "post",
-                    url: appSettings.serverPath + "/api/empSettings/updateDept/",
+                    url: appSettings.serverPath + "/api/academics/updateDept/",
                     data: JSON.stringify(dept),
                     dataType: "json"
                 });
@@ -37,7 +37,7 @@
             this.AddDeptRecord = function (record) {
                 var response = $http({
                     method: "POST",
-                    url: appSettings.serverPath + "/api/empSettings/addDepartment",
+                    url: appSettings.serverPath + "/api/academics/addDepartment",
                     data: JSON.stringify(record),
                     dataType: "json"
                 });
@@ -48,7 +48,7 @@
             this.deleteDeptRecord = function (person) {
                 var response = $http({
                     method: "POST",
-                    url: appSettings.serverPath + "/api/empSettings/deleteDept",
+                    url: appSettings.serverPath + "/api/academics/deleteDept",
                     data: JSON.stringify(person),
                     dataType: "json"
                     //params: {

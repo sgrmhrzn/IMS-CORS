@@ -246,13 +246,11 @@
     <Compile Include="Controllers\adminSettingsController.cs" />
     <Compile Include="Controllers\academicsSettingsController.cs" />
     <Compile Include="Controllers\financeApiController.cs" />
+    <Compile Include="Core\Lecture.cs" />
     <Compile Include="Controllers\studentsApiController.cs" />
     <Compile Include="Controllers\usersApiController.cs" />
-    <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\employeeApiController.cs" />
-    <Compile Include="Controllers\TestController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Core\BatchCreation.cs" />
     <Compile Include="Core\CLASS.cs" />
     <Compile Include="Core\EmpAttendance.cs" />
@@ -263,14 +261,12 @@
     <Compile Include="Core\FeeStructure.cs" />
     <Compile Include="Core\Courses.cs" />
     <Compile Include="Core\base64ToByte.cs" />
-    <Compile Include="Core\contact_Detail.cs" />
     <Compile Include="Core\DEPARTMENT.cs" />
     <Compile Include="Core\AccessLevel.cs" />
     <Compile Include="Core\Users.cs" />
     <Compile Include="Core\STUDENT_DETAILS.cs" />
     <Compile Include="Core\Student.cs" />
     <Compile Include="Core\EMPLOYEE.cs" />
-    <Compile Include="Core\personDes.cs" />
     <Compile Include="Data\AbDataContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
